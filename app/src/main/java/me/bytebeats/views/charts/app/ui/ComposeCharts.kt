@@ -5,6 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import me.bytebeats.views.charts.app.ui.screen.HomeScreen
+import me.bytebeats.views.charts.app.ui.screen.line.LineChartScreen
 import me.bytebeats.views.charts.app.ui.screen.pie.PieChartScreen
 import me.bytebeats.views.charts.app.ui.theme.ComposeChartsTheme
 
@@ -26,9 +27,9 @@ private fun ComposeChartsContent() {
     Crossfade(targetState = ScreenRouter.currentScreen) { screen ->
         Surface(color = MaterialTheme.colors.background) {
             when (screen) {
-                Screen.Home -> HomeScreen()
                 Screen.Pie -> PieChartScreen()
-                else -> PieChartScreen()
+                Screen.Line -> LineChartScreen()
+                else -> HomeScreen()
             }
         }
     }
