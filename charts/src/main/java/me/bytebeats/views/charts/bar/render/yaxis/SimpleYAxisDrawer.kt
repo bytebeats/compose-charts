@@ -19,14 +19,14 @@ import kotlin.math.roundToInt
  */
 
 data class SimpleYAxisDrawer(
-    val labelTextSize: TextUnit = 12.sp,
-    val labelTextColor: Color = Color.Black,
-    val drawLabelEvery: Int = 3,
-    val labelValueFormatter: LabelFormatter = { value ->
+    private val labelTextSize: TextUnit = 12.sp,
+    private val labelTextColor: Color = Color.Black,
+    private val drawLabelEvery: Int = 3,
+    private val labelValueFormatter: LabelFormatter = { value ->
         "%.1f".format(value)
     },
-    val axisLineThickness: Dp = 1.dp,
-    val axisLineColor: Color = Color.Black
+    private val axisLineThickness: Dp = 1.dp,
+    private val axisLineColor: Color = Color.Black
 ) : IYAxisDrawer {
 
     private val mAxisLinePaint by lazy {
@@ -79,7 +79,7 @@ data class SimpleYAxisDrawer(
                 val x = drawableArea.right - axisLineThickness.toPx() - labelTextSize.toPx() / 2F
                 labelPaint.getTextBounds(label, 0, label.length, mTextBounds)
                 val y =
-                    drawableArea.bottom - i * (totalHeight / labelCount) - mTextBounds.height() / 2F
+                    drawableArea.bottom - i * (totalHeight / labelCount) + mTextBounds.height() / 2F
                 canvas.nativeCanvas.drawText(label, x, y, labelPaint)
             }
         }

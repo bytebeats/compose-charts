@@ -49,7 +49,7 @@ internal fun BarChartData.forEachWithArea(
 ) {
     val barCount = bars.size
     val widthOfBarArea = barDrawableArea.width / barCount
-    val offsetOfBar = barDrawableArea.height + 0.2F
+    val offsetOfBar = widthOfBarArea * 0.2F
 
     bars.forEachIndexed { index, bar ->
         val left = barDrawableArea.left + index * widthOfBarArea

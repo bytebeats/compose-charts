@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
  * Quote: Peasant. Educated. Worker
  */
 data class SimpleXAxisDrawer(
-    val axisLineThickness: Dp = 1.dp,
-    val axisLineColor: Color = Color.Black
+    private val axisLineThickness: Dp = 1.dp,
+    private val axisLineColor: Color = Color.Black
 ) : IXAxisDrawer {
 
     private val mPaint by lazy {

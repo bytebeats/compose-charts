@@ -5,6 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import me.bytebeats.views.charts.app.ui.screen.HomeScreen
+import me.bytebeats.views.charts.app.ui.screen.bar.BarChartScreen
 import me.bytebeats.views.charts.app.ui.screen.line.LineChartScreen
 import me.bytebeats.views.charts.app.ui.screen.pie.PieChartScreen
 import me.bytebeats.views.charts.app.ui.theme.ComposeChartsTheme
@@ -29,6 +30,7 @@ private fun ComposeChartsContent() {
             when (screen) {
                 Screen.Pie -> PieChartScreen()
                 Screen.Line -> LineChartScreen()
+                Screen.Bar -> BarChartScreen()
                 else -> HomeScreen()
             }
         }
