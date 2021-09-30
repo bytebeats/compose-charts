@@ -1,10 +1,10 @@
 package me.bytebeats.views.charts.app.ui.screen.pie
 
-import android.print.PrintAttributes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Delete
@@ -43,7 +43,7 @@ fun PieChartScreen() {
 
 @Composable
 private fun PieChartScreenContent() {
-    val dataModel = remember {
+    val pieChartDataModel = remember {
         PieChartDataModel()
     }
 
@@ -53,12 +53,12 @@ private fun PieChartScreenContent() {
             vertical = Margins.vertical
         )
     ) {
-        PieChartRow(pieChartDataModel = dataModel)
+        PieChartRow(pieChartDataModel = pieChartDataModel)
         SliceThicknessRow(
-            sliceThickness = dataModel.sliceThickness,
-            onValueUpdated = { dataModel.sliceThickness = it },
+            sliceThickness = pieChartDataModel.sliceThickness,
+            onValueUpdated = { pieChartDataModel.sliceThickness = it },
         )
-        AddOrRemoveSliceRow(pieChartDataModel = dataModel)
+        AddOrRemoveSliceRow(pieChartDataModel = pieChartDataModel)
     }
 }
 
@@ -66,7 +66,7 @@ private fun PieChartScreenContent() {
 private fun PieChartRow(pieChartDataModel: PieChartDataModel) {
     Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .height(150.dp)
             .padding(vertical = Margins.vertical)
     ) {
@@ -81,12 +81,12 @@ private fun PieChartRow(pieChartDataModel: PieChartDataModel) {
 private fun SliceThicknessRow(sliceThickness: Float, onValueUpdated: (Float) -> Unit) {
     Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(vertical = Margins.verticalLarge),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Slice Thickness",
+            text = "Slice Thickness: ",
             modifier = Modifier
                 .align(Alignment.CenterVertically)
                 .padding(end = Margins.horizontal)
@@ -103,7 +103,7 @@ private fun SliceThicknessRow(sliceThickness: Float, onValueUpdated: (Float) -> 
 private fun AddOrRemoveSliceRow(pieChartDataModel: PieChartDataModel) {
     Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(vertical = Margins.vertical),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
@@ -131,7 +131,7 @@ private fun AddOrRemoveSliceRow(pieChartDataModel: PieChartDataModel) {
             shape = CircleShape
         ) {
             Icon(
-                imageVector = Icons.Filled.ArrowDropDown,
+                imageVector = Icons.Filled.Add,
                 contentDescription = "Add Slice to PieChart"
             )
         }
