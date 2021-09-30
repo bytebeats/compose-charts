@@ -51,7 +51,7 @@ private fun DrawChart(
 ) {
     val slices = pieChartData.slices
 
-    Canvas(modifier) {
+    Canvas(modifier = modifier) {
         drawIntoCanvas {
             var startArc = 0F
             slices.forEach { slice ->
@@ -76,12 +76,12 @@ private fun DrawChart(
 
 @Preview
 @Composable
-fun PreviewPieChart() = PieChart(
+fun PieChartPreview() = PieChart(
     pieChartData = PieChartData(
         slices = listOf(
             PieChartData.Slice(25F, Color.Red),
             PieChartData.Slice(45F, Color.Green),
-            PieChartData.Slice(20F, Color.Blue)
+            PieChartData.Slice(20F, Color.Blue),
         )
     )
 )

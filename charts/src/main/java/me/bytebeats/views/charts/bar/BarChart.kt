@@ -37,8 +37,9 @@ fun BarChar(
     labelDrawer: ILabelDrawer = SimpleLabelDrawer()
 ) {
     val transitionAnimation = remember(barChartData.bars) { Animatable(initialValue = 0F) }
+
     LaunchedEffect(barChartData.bars) {
-        transitionAnimation.snapTo(0F)
+//        transitionAnimation.snapTo(0F)
         transitionAnimation.animateTo(1F, animationSpec = animation)
     }
 
