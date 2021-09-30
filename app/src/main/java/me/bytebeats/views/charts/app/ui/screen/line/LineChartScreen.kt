@@ -26,7 +26,7 @@ fun LineChartScreen() {
                 IconButton(onClick = { ScreenRouter.navigateHome() }) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Go back to home"
+                        contentDescription = "Go back home"
                     )
                 }
             },

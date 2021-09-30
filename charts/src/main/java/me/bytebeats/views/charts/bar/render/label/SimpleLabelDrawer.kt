@@ -23,12 +23,12 @@ data class SimpleLabelDrawer(
     private val mPaint by lazy {
         android.graphics.Paint().apply {
             textAlign = android.graphics.Paint.Align.CENTER
-            color = this@SimpleLabelDrawer.labelTextColor.toLegacyInt()
+            color = labelTextColor.toLegacyInt()
         }
     }
 
     override fun requiredAboveBarHeight(drawScope: DrawScope): Float = when (drawLocation) {
-        DrawLocation.Outside -> 1.5F * labelTextHeight(drawScope)
+        DrawLocation.Outside -> 3F / 2F * labelTextHeight(drawScope)
         else -> 0F
     }
 
@@ -56,7 +56,7 @@ data class SimpleLabelDrawer(
     }
 
     private fun labelTextHeight(drawScope: DrawScope): Float = with(drawScope) {
-        mLabelTextArea ?: 1.5F * labelTextSize.toPx()
+        mLabelTextArea ?: (1.5F * labelTextSize.toPx())
     }
 
     private fun paint(drawScope: DrawScope): android.graphics.Paint = with(drawScope) {

@@ -33,7 +33,7 @@ fun PieChartScreen() {
     Scaffold(topBar = {
         TopAppBar(navigationIcon = {
             IconButton(onClick = { ScreenRouter.navigateHome() }) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Go back to Home")
+                Icon(Icons.Filled.ArrowBack, contentDescription = "Go back Home")
             }
         }, title = { Text(text = "Pie Chart") })
     }) {
@@ -104,7 +104,7 @@ private fun AddOrRemoveSliceRow(pieChartDataModel: PieChartDataModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = Margins.vertical),
+            .padding(top = Margins.vertical),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
