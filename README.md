@@ -9,6 +9,106 @@
 
 Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Desktop.
 
+## Graph Effects
+
+<img src="/arts/pie_chart.gif"/>
+
+<img src="/arts/line_chart.gif"/>
+
+<img src="/arts/bar_chart.gif"/>
+
+## How to use?
+
+1, show Pie Chart in Jetpack Compose:
+```
+@Composable
+fun PieChartView() {
+    PieChart(
+        pieChartData = PieChartData(
+            slices = listOf(
+                PieChartData.Slice(
+                    randomLength(),
+                    randomColor()
+                ),
+                PieChartData.Slice(randomLength(), randomColor()),
+                PieChartData.Slice(randomLength(), randomColor())
+            )
+        ),
+        // Optional properties.
+        modifier = Modifier.fillMaxSize(),
+        animation = simpleChartAnimation(),
+        sliceDrawer = SimpleSliceDrawer()
+    )
+}
+```
+
+2, show Line Chart in Jetpack Compose:
+```
+@Composable
+fun LineChartView() {
+    LineChart(
+        lineChartData = LineChartData(
+            points = listOf(
+                Point(randomYValue(), "Line 1"),
+                Point(randomYValue(), "Line 2"),
+                Point(randomYValue(), "Line 3"),
+                Point(randomYValue(), "Line 4"),
+                Point(randomYValue(), "Line 5"),
+                Point(randomYValue(), "Line 6"),
+                Point(randomYValue(), "Line 7")
+            )
+        ),
+        // Optional properties.
+        modifier = Modifier.fillMaxSize(),
+        animation = simpleChartAnimation(),
+        pointDrawer = FilledCircularPointDrawer(),
+        lineDrawer = SolidLineDrawer(),
+        xAxisDrawer = SimpleXAxisDrawer(),
+        yAxisDrawer = SimpleYAxisDrawer(),
+        horizontalOffset = 5f
+    )
+}
+```
+
+2, show Bar Chart in Jetpack Compose:
+```
+@Composable
+fun BarChartView() {
+    BarChart(
+        barChartData = BarChartData(
+            bars = listOf(
+                BarChartData.Bar(
+                    label = "Bar 1",
+                    value = randomValue(),
+                    color = randomColor()
+                ),
+                BarChartData.Bar(
+                    label = "Bar 2",
+                    value = randomValue(),
+                    color = randomColor()
+                ),
+                BarChartData.Bar(
+                    label = "Bar 3",
+                    value = randomValue(),
+                    color = randomColor()
+                ),
+                BarChartData.Bar(
+                    label = "Bar 4",
+                    value = randomValue(),
+                    color = randomColor()
+                ),
+            )
+        ),
+        // Optional properties.
+        modifier = Modifier.fillMaxSize(),
+        animation = simpleChartAnimation(),
+        barDrawer = SimpleBarDrawer(),
+        xAxisDrawer = SimpleXAxisDrawer(),
+        yAxisDrawer = SimpleYAxisDrawer(),
+        labelDrawer = SimpleValueDrawer()
+    ) 
+}
+```
 
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/bytebeats/compose-charts.svg)](https://starchart.cc/bytebeats/compose-charts)
