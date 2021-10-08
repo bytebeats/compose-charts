@@ -1,4 +1,5 @@
 # compose-charts
+
 [![GitHub latest commit](https://badgen.net/github/last-commit/bytebeats/compose-charts)](https://github.com/bytebeats/compose-charts/commit/)
 [![GitHub contributors](https://img.shields.io/github/contributors/bytebeats/compose-charts.svg)](https://github.com/bytebeats/compose-charts/graphs/contributors/)
 [![GitHub issues](https://img.shields.io/github/issues/bytebeats/compose-charts.svg)](https://github.com/bytebeats/compose-charts/issues/)
@@ -11,15 +12,16 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 ## Graph Effects
 
-<img src="/arts/pie_chart.gif"/>
+<img src="/arts/pie_chart.gif" width="300" height="840"/>
 
-<img src="/arts/line_chart.gif"/>
+<img src="/arts/line_chart.gif" width="300" height="840"/>
 
-<img src="/arts/bar_chart.gif"/>
+<img src="/arts/bar_chart.gif" width="300" height="840"/>
 
 ## How to use?
 
 1, show Pie Chart in Jetpack Compose:
+
 ```
 @Composable
 fun PieChartView() {
@@ -43,6 +45,7 @@ fun PieChartView() {
 ```
 
 2, show Line Chart in Jetpack Compose:
+
 ```
 @Composable
 fun LineChartView() {
@@ -70,7 +73,8 @@ fun LineChartView() {
 }
 ```
 
-2, show Bar Chart in Jetpack Compose:
+3, show Bar Chart in Jetpack Compose:
+
 ```
 @Composable
 fun BarChartView() {
@@ -111,10 +115,13 @@ fun BarChartView() {
 ```
 
 ## Stargazers over time
+
 [![Stargazers over time](https://starchart.cc/bytebeats/compose-charts.svg)](https://starchart.cc/bytebeats/compose-charts)
 
 ## Github Stars Sparklines
+
 [![Sparkline](https://stars.medv.io/bytebeats/compose-charts.svg)](https://stars.medv.io/bytebeats/compose-charts)
 
 ## Contributors
+
 [![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=bytebeats/compose-charts)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=bytebeats/compose-charts)
