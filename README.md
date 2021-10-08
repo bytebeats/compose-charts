@@ -12,11 +12,7 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 ## Graph Effects
 
-<img src="/arts/pie_chart.gif" width="300" height="840"/>
-
-<img src="/arts/line_chart.gif" width="300" height="840"/>
-
-<img src="/arts/bar_chart.gif" width="300" height="840"/>
+<img src="/arts/pie_chart.gif" width="300" height="720"/><img src="/arts/line_chart.gif" width="300" height="720"/><img src="/arts/bar_chart.gif" width="300" height="720"/>
 
 ## How to use?
 
