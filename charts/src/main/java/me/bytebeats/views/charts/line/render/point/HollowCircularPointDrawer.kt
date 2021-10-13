@@ -32,9 +32,9 @@ data class HollowCircularPointDrawer(
     override fun drawPoint(drawScope: DrawScope, canvas: Canvas, center: Offset) {
         with(drawScope as Density) {
             canvas.drawCircle(
-                center,
-                diameter.toPx().div(2F),
-                mPaint.apply { strokeWidth = lineThickness.toPx() })
+                center = center,
+                radius = diameter.toPx() / 2F,
+                paint = mPaint.apply { strokeWidth = lineThickness.toPx() })
         }
     }
 }
