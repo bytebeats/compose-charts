@@ -23,8 +23,8 @@ fun computeDrawableArea(
     return Rect(
         left = yAxisDrawableArea.right + horizontalOffset,
         top = 0F,
-        right = xAxisDrawableArea.top,
-        bottom = size.width - horizontalOffset
+        bottom = xAxisDrawableArea.top,
+        right = size.width - horizontalOffset
     )
 }
 
