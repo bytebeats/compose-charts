@@ -23,8 +23,8 @@ fun computeDrawableArea(
     return Rect(
         left = yAxisDrawableArea.right + horizontalOffset,
         top = 0F,
-        right = xAxisDrawableArea.top,
-        bottom = size.width - horizontalOffset
+        bottom = xAxisDrawableArea.top,
+        right = size.width - horizontalOffset
     )
 }
 
@@ -91,14 +91,16 @@ fun computeLinePath(
             val pointLocation = computePointLocation(drawableArea, lineChartData, point, index)
             if (index == 0) {
                 moveTo(pointLocation.x, pointLocation.y)
-            } else if (progress <= 1F) {
-                val preX = prePointLocation?.x ?: 0F
-                val preY = prePointLocation?.y ?: 0F
-                val tx = (pointLocation.x - preX) * progress + preX
-                val ty = (pointLocation.y - preY) * progress + preY
-                lineTo(tx, ty)
             } else {
-                lineTo(pointLocation.x, pointLocation.y)
+                if (progress <= 1F) {
+                    val preX = prePointLocation?.x ?: 0F
+                    val preY = prePointLocation?.y ?: 0F
+                    val tx = (pointLocation.x - preX) * progress + preX
+                    val ty = (pointLocation.y - preY) * progress + preY
+                    lineTo(tx, ty)
+                } else {
+                    lineTo(pointLocation.x, pointLocation.y)
+                }
             }
             prePointLocation = pointLocation
         }
@@ -119,16 +121,18 @@ fun computeFillPath(
             if (index == 0) {
                 lineTo(drawableArea.left, pointLocation.y)
                 lineTo(pointLocation.x, pointLocation.y)
-            } else if (progress <= 1F) {
-                val preX = prePointLocation?.x ?: 0F
-                val preY = prePointLocation?.y ?: 0F
-                val tx = (pointLocation.x - preX) * progress + preX
-                val ty = (pointLocation.y - preY) * progress + preY
-                lineTo(tx, ty)
-                prePointX = tx
             } else {
-                lineTo(pointLocation.x, pointLocation.y)
-                prePointX = pointLocation.x
+                if (progress <= 1F) {
+                    val preX = prePointLocation?.x ?: 0F
+                    val preY = prePointLocation?.y ?: 0F
+                    val tx = (pointLocation.x - preX) * progress + preX
+                    val ty = (pointLocation.y - preY) * progress + preY
+                    lineTo(tx, ty)
+                    prePointX = tx
+                } else {
+                    lineTo(pointLocation.x, pointLocation.y)
+                    prePointX = pointLocation.x
+                }
             }
             prePointLocation = pointLocation
         }

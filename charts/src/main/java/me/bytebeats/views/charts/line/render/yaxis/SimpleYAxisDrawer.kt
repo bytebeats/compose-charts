@@ -68,10 +68,10 @@ class SimpleYAxisDrawer(
 
             val minLabelHeight = labelTextSize.toPx() * drawLabelEvery.toFloat()
             val totalHeight = drawableArea.height
-            val labelCount = (drawableArea.height / minLabelHeight).roundToInt().coerceAtMost(1)
+            val labelCount = (drawableArea.height / minLabelHeight).roundToInt().coerceAtLeast(2)
 
             for (i in 0..labelCount) {
-                val value = minValue + i * (maxValue - minValue) / 2F
+                val value = minValue + i * (maxValue - minValue) / labelCount
                 val label = labelValueFormatter(value)
                 val x = drawableArea.right - axisLineThickness.toPx() - labelTextSize.toPx() / 2F
                 labelPaint.getTextBounds(label, 0, label.length, mTextBounds)
