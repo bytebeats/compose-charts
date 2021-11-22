@@ -35,6 +35,7 @@ android {
         kotlinCompilerVersion kotlin_version
         kotlinCompilerExtensionVersion compose_version
     }
+    namespace 'me.bytebeats.views.charts'
 }
 
 dependencies {
