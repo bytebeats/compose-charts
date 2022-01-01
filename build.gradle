@@ -10,3 +10,18 @@ buildscript {
         kotlin_version = "1.5.30"
     }
 }
+
+ext {
+    GROUP_ID = 'io.github.bytebeats'
+    DEVELOPER_ID = 'bytebeats'
+    DEVELOPER_NAME = 'Chen Pan'
+    DEVELOPER_EMAIL = 'happychinapc@gmail.com'
+    SCM_CONNECTION = 'scm:git:github.com/bytebeats/compose-charts.git'
+    SCM_DEVELOPER_CONNECTION = 'scm:git:ssh:github.com/bytebeats/compose-charts.git'
+    SCM_URL = 'https://github.com/bytebeats/compose-charts/tree/master'
+    LICENSE_NAME = 'The Apache License, Version 2.0'
+    LICENSE_URL = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    POM_URL = 'https://github.com/bytebeats/compose-charts'
+    RELEASES_REPO_URL = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+    SNAPSHOTS_REPO_URL = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+}
