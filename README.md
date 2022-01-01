@@ -16,6 +16,25 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 ## How to use?
 
+0, add maven and dependency:
+0.1 add maven specific url in your root `build.gradle`
+```
+    repositories {
+       maven { url('https://repo1.maven.org/maven2/') }
+               ...
+    }
+```
+0.2 add dependency in your module `build.gradle`
+
+```
+dependencies {
+    implementation "androidx.compose.ui:ui:$compose_version"
+
+//    implementation project(':charts')
+    implementation('io.github.bytebeats:compose-charts:0.1.0')
+}
+```
+
 1, show Pie Chart in Jetpack Compose:
 
 ```
