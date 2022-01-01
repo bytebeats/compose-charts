@@ -18,14 +18,17 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 1. add maven and dependency:
 
-1.1. add maven specific url in your root `build.gradle`
+    1.1. add specific maven url in your root `build.gradle`
+
 ```
     repositories {
        maven { url('https://repo1.maven.org/maven2/') }
                ...
     }
 ```
-1.2. add dependency in your module `build.gradle`
+
+    1.2. add dependency in your module `build.gradle`
+
 ```
 dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
