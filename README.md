@@ -16,16 +16,16 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 ## How to use?
 
-0, add maven and dependency:
-0.1 add maven specific url in your root `build.gradle`
+1. add maven and dependency:
+
+1.1. add maven specific url in your root `build.gradle`
 ```
     repositories {
        maven { url('https://repo1.maven.org/maven2/') }
                ...
     }
 ```
-0.2 add dependency in your module `build.gradle`
-
+1.2. add dependency in your module `build.gradle`
 ```
 dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
@@ -35,7 +35,7 @@ dependencies {
 }
 ```
 
-1, show Pie Chart in Jetpack Compose:
+2. show Pie Chart in Jetpack Compose:
 
 ```
 @Composable
@@ -59,7 +59,7 @@ fun PieChartView() {
 }
 ```
 
-2, show Line Chart in Jetpack Compose:
+3. show Line Chart in Jetpack Compose:
 
 ```
 @Composable
@@ -88,7 +88,7 @@ fun LineChartView() {
 }
 ```
 
-3, show Bar Chart in Jetpack Compose:
+4. show Bar Chart in Jetpack Compose:
 
 ```
 @Composable
@@ -128,7 +128,6 @@ fun BarChartView() {
     ) 
 }
 ```
-
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/bytebeats/compose-charts.svg)](https://starchart.cc/bytebeats/compose-charts)
