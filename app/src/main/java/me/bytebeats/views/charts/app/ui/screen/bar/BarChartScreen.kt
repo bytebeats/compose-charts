@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.bytebeats.views.charts.app.ui.ScreenRouter
 import me.bytebeats.views.charts.app.ui.theme.Margins
-import me.bytebeats.views.charts.bar.BarChar
+import me.bytebeats.views.charts.bar.BarChart
 import me.bytebeats.views.charts.bar.render.label.SimpleLabelDrawer
 
 /**
@@ -67,7 +67,7 @@ private fun BarChartRow(barChartDataModel: BarChartDataModel) {
             .height(280.dp)
             .padding(vertical = Margins.verticalLarge)
     ) {
-        BarChar(
+        BarChart(
             barChartData = barChartDataModel.barChartData,
             labelDrawer = barChartDataModel.labelDrawer
         )

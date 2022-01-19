@@ -27,7 +27,7 @@ import me.bytebeats.views.charts.simpleChartAnimation
  */
 
 @Composable
-fun BarChar(
+fun BarChart(
     barChartData: BarChartData,
     modifier: Modifier = Modifier,
     animation: AnimationSpec<Float> = simpleChartAnimation(),
