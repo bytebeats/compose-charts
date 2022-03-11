@@ -36,7 +36,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
 
 //    implementation project(':charts')
-    implementation('io.github.bytebeats:compose-charts:0.1.0')
+    implementation('io.github.bytebeats:compose-charts:0.1.1')
 }
 ```
 
