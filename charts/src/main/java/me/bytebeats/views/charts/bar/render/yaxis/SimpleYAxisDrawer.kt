@@ -2,8 +2,12 @@ package me.bytebeats.views.charts.bar.render.yaxis
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.Canvas
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -22,9 +26,7 @@ data class SimpleYAxisDrawer(
     private val labelTextSize: TextUnit = 12.sp,
     private val labelTextColor: Color = Color.Black,
     private val drawLabelEvery: Int = 3,
-    private val labelValueFormatter: LabelFormatter = { value ->
-        "%.1f".format(value)
-    },
+    private val labelValueFormatter: LabelFormatter = { value -> "%.1f".format(value) },
     private val axisLineThickness: Dp = 1.dp,
     private val axisLineColor: Color = Color.Black
 ) : IYAxisDrawer {

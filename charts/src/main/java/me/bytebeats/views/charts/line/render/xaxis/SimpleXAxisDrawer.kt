@@ -2,9 +2,17 @@ package me.bytebeats.views.charts.line.render.xaxis
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.Canvas
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.unit.*
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import me.bytebeats.views.charts.AxisLabelFormatter
 import me.bytebeats.views.charts.toLegacyInt
 
 /**
@@ -17,7 +25,8 @@ data class SimpleXAxisDrawer(
     val labelTextColor: Color = Color.Black,
     val drawLabelEvery: Int = 1,// draw label text every $drawLabelEvery, like 1, 2, 3 and so on.
     val axisLineThickness: Dp = 1.dp,
-    val axisLineColor: Color = Color.Black
+    val axisLineColor: Color = Color.Black,
+    val axisLabelFormatter: AxisLabelFormatter = { value -> "$value" }
 ) : IXAxisDrawer {
     private val mAxisLinePaint by lazy {
         Paint().apply {
@@ -54,7 +63,7 @@ data class SimpleXAxisDrawer(
         drawScope: DrawScope,
         canvas: Canvas,
         drawableArea: Rect,
-        labels: List<String>
+        labels: List<*>
     ) {
         with(drawScope) {
             val labelPaint = mTextPaint.apply {
@@ -64,9 +73,10 @@ data class SimpleXAxisDrawer(
             val labelIncrements = drawableArea.width / (labels.size - 1)
             labels.forEachIndexed { index, label ->
                 if (index.rem(drawLabelEvery) == 0) {
+                    val labelValue = axisLabelFormatter(label)
                     val x = drawableArea.left + labelIncrements * index
                     val y = drawableArea.bottom
-                    canvas.nativeCanvas.drawText(label, x, y, labelPaint)
+                    canvas.nativeCanvas.drawText(labelValue, x, y, labelPaint)
                 }
             }
         }

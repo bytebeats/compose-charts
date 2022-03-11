@@ -7,3 +7,4 @@ package me.bytebeats.views.charts
  */
 
 typealias LabelFormatter = (value: Float) -> String
+typealias AxisLabelFormatter = (value: Any?) -> String

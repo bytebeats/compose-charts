@@ -15,7 +15,7 @@ interface ILabelDrawer {
     fun drawLabel(
         drawScope: DrawScope,
         canvas: Canvas,
-        label: String,
+        label: Any?,
         barArea: Rect,
         xAxisArea: Rect
     )

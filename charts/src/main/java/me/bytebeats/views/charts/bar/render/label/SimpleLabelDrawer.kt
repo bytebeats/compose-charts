@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
+import me.bytebeats.views.charts.AxisLabelFormatter
 import me.bytebeats.views.charts.toLegacyInt
 
 /**
@@ -17,7 +18,8 @@ import me.bytebeats.views.charts.toLegacyInt
 data class SimpleLabelDrawer(
     val drawLocation: DrawLocation = DrawLocation.Inside,
     val labelTextSize: TextUnit = 12.sp,
-    val labelTextColor: Color = Color.Black
+    val labelTextColor: Color = Color.Black,
+    val axisLabelFormatter: AxisLabelFormatter = { value -> "$value" }
 ) : ILabelDrawer {
     private val mLabelTextArea: Float? = null
     private val mPaint by lazy {
@@ -40,7 +42,7 @@ data class SimpleLabelDrawer(
     override fun drawLabel(
         drawScope: DrawScope,
         canvas: Canvas,
-        label: String,
+        label: Any?,
         barArea: Rect,
         xAxisArea: Rect
     ) {
@@ -51,7 +53,8 @@ data class SimpleLabelDrawer(
                 DrawLocation.Outside -> barArea.top - labelTextSize.toPx() / 2
                 DrawLocation.XAxis -> barArea.bottom + labelTextHeight(drawScope)
             }
-            canvas.nativeCanvas.drawText(label, xCenter, yCenter, paint(drawScope))
+            val labelValue = axisLabelFormatter(label)
+            canvas.nativeCanvas.drawText(labelValue, xCenter, yCenter, paint(drawScope))
         }
     }
 
