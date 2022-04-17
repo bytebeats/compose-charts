@@ -5,7 +5,7 @@ plugins {
 
 ext {
     COMPOSE_CHARTS_ARTIFACT_ID = 'compose-charts'
-    COMPOSE_CHARTS_VERSION = '0.1.1'
+    COMPOSE_CHARTS_VERSION = '0.1.2'
     COMPOSE_CHARTS_POM_DESCRIPTION = 'compose-charts: Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Desktop.'
 }
 

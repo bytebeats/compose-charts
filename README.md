@@ -12,6 +12,8 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 Compose Multiplatform for Desktop: [compose-charts-desktop](https://github.com/bytebeats/compose-charts-desktop).
 
+**LATEST_VERSION**: 0.1.2
+
 ## Graph Effects
 
 <img src="/arts/pie_chart.gif" width="220" height="480"/><img src="/arts/line_chart.gif" width="220" height="480"/><img src="/arts/bar_chart.gif" width="220" height="480"/>
@@ -36,7 +38,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
 
 //    implementation project(':charts')
-    implementation('io.github.bytebeats:compose-charts:0.1.1')
+    implementation('io.github.bytebeats:compose-charts:**LATEST_VERSION**')
 }
 ```
 
