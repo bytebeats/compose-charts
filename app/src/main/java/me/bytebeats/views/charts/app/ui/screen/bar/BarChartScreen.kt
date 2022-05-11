@@ -19,6 +19,7 @@ import me.bytebeats.views.charts.app.ui.ScreenRouter
 import me.bytebeats.views.charts.app.ui.theme.Margins
 import me.bytebeats.views.charts.bar.BarChart
 import me.bytebeats.views.charts.bar.render.label.SimpleLabelDrawer
+import me.bytebeats.views.charts.bar.render.yaxis.SimpleYAxisDrawer
 
 /**
  * Created by bytebeats on 2021/9/30 : 19:53
@@ -69,7 +70,12 @@ private fun BarChartRow(barChartDataModel: BarChartDataModel) {
     ) {
         BarChart(
             barChartData = barChartDataModel.barChartData,
-            labelDrawer = barChartDataModel.labelDrawer
+            labelDrawer = barChartDataModel.labelDrawer,
+//            yAxisDrawer = SimpleYAxisDrawer(labelValueFormatter = { value ->
+//                "your regex here".format(
+//                    value
+//                )
+//            })
         )
     }
 }
