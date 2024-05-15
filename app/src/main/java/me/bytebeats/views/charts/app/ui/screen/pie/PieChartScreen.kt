@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -32,22 +32,24 @@ fun PieChartScreen() {
     Scaffold(topBar = {
         TopAppBar(navigationIcon = {
             IconButton(onClick = { ScreenRouter.navigateHome() }) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Go back Home")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Go back Home")
             }
         }, title = { Text(text = "Pie Chart") })
     }) {
-        PieChartScreenContent()
+        PieChartScreenContent(Modifier.padding(it))
     }
 }
 
 @Composable
-private fun PieChartScreenContent() {
+private fun PieChartScreenContent(
+    modifier: Modifier = Modifier
+) {
     val pieChartDataModel = remember {
         PieChartDataModel()
     }
 
     Column(
-        modifier = Modifier.padding(
+        modifier = modifier.padding(
             horizontal = Margins.horizontal,
             vertical = Margins.vertical
         )

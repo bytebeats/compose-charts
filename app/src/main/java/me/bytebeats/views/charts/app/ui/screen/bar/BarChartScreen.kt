@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -33,21 +33,21 @@ fun BarChartScreen() {
         TopAppBar(navigationIcon = {
             IconButton(onClick = { ScreenRouter.navigateHome() }) {
                 Icon(
-                    imageVector = Icons.Default.ArrowBack,
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Go back home"
                 )
             }
         }, title = { Text(text = "Bar Chart") })
     }) {
-        BarChartContent()
+        BarChartContent(Modifier.padding(it))
     }
 }
 
 @Composable
-private fun BarChartContent() {
+private fun BarChartContent(modifier: Modifier = Modifier) {
     val barChartDataModel = BarChartDataModel()
     Column(
-        modifier = Modifier.padding(
+        modifier = modifier.padding(
             horizontal = Margins.horizontal,
             vertical = Margins.vertical
         )

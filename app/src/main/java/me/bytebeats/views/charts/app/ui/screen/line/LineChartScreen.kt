@@ -1,9 +1,23 @@
 package me.bytebeats.views.charts.app.ui.screen.line
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Slider
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,7 +39,7 @@ fun LineChartScreen() {
             navigationIcon = {
                 IconButton(onClick = { ScreenRouter.navigateHome() }) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Go back home"
                     )
                 }
@@ -33,16 +47,18 @@ fun LineChartScreen() {
             title = { Text(text = "Line Chart") }
         )
     }) {
-        LineChartContent()
+        LineChartContent(Modifier.padding(it))
     }
 }
 
 @Composable
-private fun LineChartContent() {
+private fun LineChartContent(
+    modifier: Modifier = Modifier
+) {
     val lineChartData = LineChartDataModel()
 
     Column(
-        modifier = Modifier.padding(
+        modifier = modifier.padding(
             horizontal = Margins.horizontal,
             vertical = Margins.vertical
         )
