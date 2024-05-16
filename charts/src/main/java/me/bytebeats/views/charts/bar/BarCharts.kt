@@ -5,9 +5,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
 import me.bytebeats.views.charts.bar.render.label.ILabelDrawer
-import me.bytebeats.views.charts.bar.render.label.SimpleLabelDrawer
 import me.bytebeats.views.charts.bar.render.xaxis.IXAxisDrawer
-import me.bytebeats.views.charts.bar.render.xaxis.SimpleXAxisDrawer
 
 /**
  * Created by bytebeats on 2021/9/25 : 13:57
