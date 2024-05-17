@@ -15,8 +15,10 @@ import androidx.compose.ui.unit.dp
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-data class FilledCircularPointDrawer(val diameter: Dp = 8.dp, val color: Color = Color.Blue) :
-    IPointDrawer {
+data class FilledCircularPointDrawer(
+    val diameter: Dp = 8.dp,
+    val color: Color = Color.Blue
+) : IPointDrawer {
 
     private val mPaint by lazy {
         Paint().apply {
@@ -26,7 +28,11 @@ data class FilledCircularPointDrawer(val diameter: Dp = 8.dp, val color: Color =
         }
     }
 
-    override fun drawPoint(drawScope: DrawScope, canvas: Canvas, center: Offset) {
+    override fun drawPoint(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        center: Offset
+    ) {
         with(drawScope as Density) {
             canvas.drawCircle(center, diameter.toPx() / 2F, paint = mPaint)
         }

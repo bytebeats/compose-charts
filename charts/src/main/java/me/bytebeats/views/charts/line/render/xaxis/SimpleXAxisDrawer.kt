@@ -47,7 +47,11 @@ data class SimpleXAxisDrawer(
         1.5F * (labelTextSize.toPx() + axisLineThickness.toPx())
     }
 
-    override fun drawXAxisLine(drawScope: DrawScope, canvas: Canvas, drawableArea: Rect) {
+    override fun drawXAxisLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        drawableArea: Rect
+    ) {
         with(drawScope) {
             val lineThickness = axisLineThickness.toPx()
             val y = drawableArea.top + lineThickness / 2F

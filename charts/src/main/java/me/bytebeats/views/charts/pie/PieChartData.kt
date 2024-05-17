@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
+
 data class PieChartData(val slices: List<Slice>) {
     internal val totalLength: Float
         get() {

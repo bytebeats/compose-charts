@@ -29,7 +29,11 @@ data class HollowCircularPointDrawer(
         }
     }
 
-    override fun drawPoint(drawScope: DrawScope, canvas: Canvas, center: Offset) {
+    override fun drawPoint(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        center: Offset
+    ) {
         with(drawScope as Density) {
             canvas.drawCircle(
                 center = center,

@@ -11,5 +11,9 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  */
 interface IXAxisDrawer {
     fun requiredHeight(drawScope: DrawScope): Float
-    fun drawXAxisLine(drawScope: DrawScope, canvas: Canvas, drawableArea: Rect)
+    fun drawXAxisLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        drawableArea: Rect
+    )
 }

@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.Color
  * Quote: Peasant. Educated. Worker
  */
 
-
 fun Color.toLegacyInt(): Int {
     return android.graphics.Color.argb(
         (alpha * 255F + .5F).toInt(),

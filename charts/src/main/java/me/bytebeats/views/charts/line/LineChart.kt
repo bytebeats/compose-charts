@@ -42,14 +42,18 @@ fun LineChart(
     check(horizontalOffset in 0F..25F) {
         "Horizontal Offset is the percentage offset from side, and must be between 0 and 25, included."
     }
-    val transitionAnimation = remember(lineChartData.points) { Animatable(initialValue = 0F) }
+    val transitionAnimation = remember(lineChartData.points) {
+        Animatable(initialValue = 0F)
+    }
 
     LaunchedEffect(lineChartData.points) {
         transitionAnimation.snapTo(0F)
         transitionAnimation.animateTo(1F, animationSpec = animation)
     }
 
-    Canvas(modifier = modifier.fillMaxSize()) {
+    Canvas(
+        modifier = modifier.fillMaxSize()
+    ) {
         drawIntoCanvas { canvas ->
             val yAxisDrawableArea = computeYAxisDrawableArea(
                 xAxisLabelSize = xAxisDrawer.requireHeight(this),

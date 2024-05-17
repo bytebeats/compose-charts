@@ -26,17 +26,27 @@ internal fun axisAreas(
         val xAxisRight = totalSize.width
         val xAxisTop = totalSize.height - xAxisDrawer.requiredHeight(drawScope)
 
-        return Rect(yAxisRight, xAxisTop, xAxisRight, totalSize.height) to Rect(
-            0F,
-            yAxisTop,
-            yAxisRight,
-            xAxisTop
+        return Rect(
+            left = yAxisRight,
+            top = xAxisTop,
+            right = xAxisRight,
+            bottom = totalSize.height
+        ) to Rect(
+            left = 0F,
+            top = yAxisTop,
+            right = yAxisRight,
+            bottom = xAxisTop
         )
     }
 }
 
 internal fun barDrawableArea(xAxisArea: Rect): Rect =
-    Rect(left = xAxisArea.left, top = 0F, right = xAxisArea.right, bottom = xAxisArea.top)
+    Rect(
+        left = xAxisArea.left,
+        top = 0F,
+        right = xAxisArea.right,
+        bottom = xAxisArea.top
+    )
 
 internal fun BarChartData.forEachWithArea(
     drawScope: DrawScope,

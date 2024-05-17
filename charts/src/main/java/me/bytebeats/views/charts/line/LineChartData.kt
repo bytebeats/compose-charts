@@ -7,7 +7,7 @@ package me.bytebeats.views.charts.line
  */
 data class LineChartData(
     val points: List<Point>,
-    val padBy: Float = 20F,//percentage we pad yValue by
+    val padBy: Float = 20F,// percentage we pad yValue by
     val startAtZero: Boolean = false
 ) {
     init {
@@ -23,12 +23,13 @@ data class LineChartData(
             return minValue to maxValue
         }
 
-    internal val maxY: Float
+    val maxY: Float
         get() = yMinMaxValues.second + (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
-    internal val minY: Float
-        get() = if (startAtZero) 0F else yMinMaxValues.first - (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
+    val minY: Float
+        get() = if (startAtZero) 0F
+        else yMinMaxValues.first - (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
 
-    internal val yRange: Float
+    val yRange: Float
         get() = maxY - minY
 
     data class Point(val value: Float, val label: String)

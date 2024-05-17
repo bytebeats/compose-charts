@@ -18,7 +18,7 @@ import kotlin.math.roundToInt
  * Quote: Peasant. Educated. Worker
  */
 
-class SimpleYAxisDrawer(
+data class SimpleYAxisDrawer(
     val labelTextSize: TextUnit = 12.sp,
     val labelTextColor: Color = Color.Black,
     val drawLabelEvery: Int = 1,
@@ -43,15 +43,18 @@ class SimpleYAxisDrawer(
 
     private val mTextBounds = android.graphics.Rect()
 
-    override fun drawAxisLine(drawScope: DrawScope, canvas: Canvas, drawableArea: Rect) =
-        with(drawScope) {
-            val lineThickness = axisLineThickness.toPx()
-            val x = drawableArea.right - lineThickness / 2F
-            canvas.drawLine(
-                p1 = Offset(x = x, y = drawableArea.top),
-                p2 = Offset(x = x, y = drawableArea.bottom),
-                paint = mAxisLinePaint.apply { strokeWidth = lineThickness })
-        }
+    override fun drawAxisLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        drawableArea: Rect
+    ) = with(drawScope) {
+        val lineThickness = axisLineThickness.toPx()
+        val x = drawableArea.right - lineThickness / 2F
+        canvas.drawLine(
+            p1 = Offset(x = x, y = drawableArea.top),
+            p2 = Offset(x = x, y = drawableArea.bottom),
+            paint = mAxisLinePaint.apply { strokeWidth = lineThickness })
+    }
 
     override fun drawAxisLabels(
         drawScope: DrawScope,

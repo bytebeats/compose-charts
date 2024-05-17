@@ -10,7 +10,11 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface IYAxisDrawer {
-    fun drawAxisLine(drawScope: DrawScope, canvas: Canvas, drawableArea: Rect)
+    fun drawAxisLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        drawableArea: Rect
+    )
 
     fun drawAxisLabels(
         drawScope: DrawScope,

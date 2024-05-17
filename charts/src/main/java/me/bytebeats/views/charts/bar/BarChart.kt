@@ -36,38 +36,52 @@ fun BarChart(
     yAxisDrawer: IYAxisDrawer = SimpleYAxisDrawer(),
     labelDrawer: ILabelDrawer = SimpleLabelDrawer()
 ) {
-    val transitionAnimation = remember(barChartData.bars) { Animatable(initialValue = 0F) }
+    val transitionAnimation = remember(barChartData.bars) {
+        Animatable(initialValue = 0F)
+    }
 
     LaunchedEffect(barChartData.bars) {
         transitionAnimation.animateTo(1F, animationSpec = animation)
     }
 
     val progress = transitionAnimation.value
-    Canvas(modifier = modifier.fillMaxSize().drawBehind {
-        drawIntoCanvas { canvas ->
-            val (xAxisArea, yAxisArea) = axisAreas(
-                drawScope = this,
-                totalSize = size,
-                xAxisDrawer = xAxisDrawer,
-                labelDrawer = labelDrawer
-            )
+    Canvas(
+        modifier = modifier
+            .fillMaxSize()
+            .drawBehind {
+                drawIntoCanvas { canvas ->
+                    val (xAxisArea, yAxisArea) = axisAreas(
+                        drawScope = this,
+                        totalSize = size,
+                        xAxisDrawer = xAxisDrawer,
+                        labelDrawer = labelDrawer
+                    )
 
-            val barDrawableArea = barDrawableArea(xAxisArea)
+                    val barDrawableArea = barDrawableArea(xAxisArea)
 
-            yAxisDrawer.drawAxisLine(drawScope = this, canvas = canvas, drawableArea = yAxisArea)
+                    yAxisDrawer.drawAxisLine(
+                        drawScope = this,
+                        canvas = canvas,
+                        drawableArea = yAxisArea
+                    )
 
-            xAxisDrawer.drawXAxisLine(drawScope = this, canvas = canvas, drawableArea = xAxisArea)
+                    xAxisDrawer.drawXAxisLine(
+                        drawScope = this,
+                        canvas = canvas,
+                        drawableArea = xAxisArea
+                    )
 
-            barChartData.forEachWithArea(
-                this,
-                barDrawableArea,
-                progress,
-                labelDrawer
-            ) { barArea, bar ->
-                barDrawer.drawBar(drawScope = this, canvas, barArea, bar)
+                    barChartData.forEachWithArea(
+                        this,
+                        barDrawableArea,
+                        progress,
+                        labelDrawer
+                    ) { barArea, bar ->
+                        barDrawer.drawBar(drawScope = this, canvas, barArea, bar)
+                    }
+                }
             }
-        }
-    }) {
+    ) {
 
         drawIntoCanvas { canvas ->
             val (xAxisArea, yAxisArea) = axisAreas(

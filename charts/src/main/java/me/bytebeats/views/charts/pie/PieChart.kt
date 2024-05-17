@@ -28,7 +28,9 @@ fun PieChart(
     animation: AnimationSpec<Float> = simpleChartAnimation(),
     sliceDrawer: ISliceDrawer = SimpleSliceDrawer()
 ) {
-    val transitionProgress = remember(pieChartData.slices) { Animatable(initialValue = 0F) }
+    val transitionProgress = remember(pieChartData.slices) {
+        Animatable(initialValue = 0F)
+    }
 
     LaunchedEffect(pieChartData.slices) {
         transitionProgress.animateTo(1F, animationSpec = animation)
@@ -51,7 +53,9 @@ private fun DrawChart(
 ) {
     val slices = pieChartData.slices
 
-    Canvas(modifier = modifier) {
+    Canvas(
+        modifier = modifier
+    ) {
         drawIntoCanvas {
             var startArc = 0F
             slices.forEach { slice ->
@@ -76,7 +80,7 @@ private fun DrawChart(
 
 @Preview
 @Composable
-fun PieChartPreview() = PieChart(
+private fun PieChartPreview() = PieChart(
     pieChartData = PieChartData(
         slices = listOf(
             PieChartData.Slice(25F, Color.Red),

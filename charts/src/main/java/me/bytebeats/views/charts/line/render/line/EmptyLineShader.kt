@@ -10,7 +10,11 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 object EmptyLineShader : ILineShader {
-    override fun fillLine(drawScope: DrawScope, canvas: Canvas, fillPath: Path) {
+    override fun fillLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        fillPath: Path
+    ) {
         // do nothing here
     }
 }

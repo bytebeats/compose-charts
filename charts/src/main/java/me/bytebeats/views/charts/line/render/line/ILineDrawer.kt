@@ -10,5 +10,9 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface ILineDrawer {
-    fun drawLine(drawScope: DrawScope, canvas: Canvas, linePath: Path)
+    fun drawLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        linePath: Path
+    )
 }

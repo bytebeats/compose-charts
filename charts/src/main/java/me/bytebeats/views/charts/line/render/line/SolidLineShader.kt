@@ -10,8 +10,17 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-data class SolidLineShader(val color: Color = Color.Blue) : ILineShader {
-    override fun fillLine(drawScope: DrawScope, canvas: Canvas, fillPath: Path) {
-        drawScope.drawPath(path = fillPath, color = color)
+data class SolidLineShader(
+    val color: Color = Color.Blue
+) : ILineShader {
+    override fun fillLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        fillPath: Path
+    ) {
+        drawScope.drawPath(
+            path = fillPath,
+            color = color
+        )
     }
 }

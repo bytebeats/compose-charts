@@ -6,5 +6,8 @@ package me.bytebeats.views.charts.pie
  * Quote: Peasant. Educated. Worker
  */
 
-internal fun calculateAngle(sliceLength: Float, totalLength: Float, progress: Float): Float =
-    360F * sliceLength * progress / totalLength
+internal fun calculateAngle(
+    sliceLength: Float,
+    totalLength: Float,
+    progress: Float
+): Float = 360F * sliceLength * progress / totalLength

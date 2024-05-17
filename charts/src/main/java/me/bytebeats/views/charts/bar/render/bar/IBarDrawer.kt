@@ -11,5 +11,10 @@ import me.bytebeats.views.charts.bar.BarChartData
  * Quote: Peasant. Educated. Worker
  */
 interface IBarDrawer {
-    fun drawBar(drawScope: DrawScope, canvas: Canvas, barArea: Rect, bar: BarChartData.Bar)
+    fun drawBar(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        barArea: Rect,
+        bar: BarChartData.Bar
+    )
 }

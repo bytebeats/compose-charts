@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
  * Quote: Peasant. Educated. Worker
  */
 data class SimpleXAxisDrawer(
-    private val axisLineThickness: Dp = 1.dp,
-    private val axisLineColor: Color = Color.Black
+    val axisLineThickness: Dp = 1.dp,
+    val axisLineColor: Color = Color.Black
 ) : IXAxisDrawer {
 
     private val mPaint by lazy {
@@ -32,7 +32,11 @@ data class SimpleXAxisDrawer(
         1.5F * axisLineThickness.toPx()
     }
 
-    override fun drawXAxisLine(drawScope: DrawScope, canvas: Canvas, drawableArea: Rect) {
+    override fun drawXAxisLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        drawableArea: Rect
+    ) {
         with(drawScope) {
             val lineThickness = axisLineThickness.toPx()
             val y = drawableArea.top + lineThickness / 2F

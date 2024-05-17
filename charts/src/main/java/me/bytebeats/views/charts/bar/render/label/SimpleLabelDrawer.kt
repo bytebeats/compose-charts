@@ -67,6 +67,8 @@ data class SimpleLabelDrawer(
     }
 
     enum class DrawLocation {
-        Inside, Outside, XAxis;
+        Inside,
+        Outside,
+        XAxis;
     }
 }

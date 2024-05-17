@@ -9,4 +9,4 @@ import androidx.compose.animation.core.TweenSpec
  * Quote: Peasant. Educated. Worker
  */
 
-fun simpleChartAnimation(): AnimationSpec<Float> = TweenSpec<Float>(durationMillis = 500)
+fun simpleChartAnimation(): AnimationSpec<Float> = TweenSpec(durationMillis = 500)
