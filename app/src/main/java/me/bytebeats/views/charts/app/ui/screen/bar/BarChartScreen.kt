@@ -43,18 +43,19 @@ import me.bytebeats.views.charts.bar.render.yaxis.SimpleYAxisDrawer
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BarChartScreen() {
-    Scaffold(topBar = {
-        TopAppBar(
-            navigationIcon = {
-                IconButton(onClick = { ScreenRouter.navigateHome() }) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Go back home"
-                    )
-                }
-            },
-            title = { Text(text = "Bar Chart") })
-    }) { paddingValues ->
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = { ScreenRouter.navigateHome() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Go back home"
+                        )
+                    }
+                },
+                title = { Text(text = "Bar Chart") })
+        }) { paddingValues ->
         BarChartContent(Modifier.padding(paddingValues))
     }
 }
@@ -91,7 +92,8 @@ private fun BarChartRow(barChartDataModel: BarChartDataModel) {
                 "your regex here".format(
                     value
                 )
-            })
+            }
+            )
         )
     }
 }
@@ -113,7 +115,10 @@ private fun DrawLabelLocation(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = Margins.horizontal, vertical = Margins.vertical)
+                .padding(
+                    horizontal = Margins.horizontal,
+                    vertical = Margins.vertical
+                )
                 .align(Alignment.CenterVertically),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
@@ -150,15 +155,16 @@ private fun AddOrRemoveBar(barChartDataModel: BarChartDataModel) {
         }
 
         Row(
-            modifier = Modifier.padding(
-                horizontal = Margins.horizontal,
-            ),
+            modifier = Modifier.padding(horizontal = Margins.horizontal),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "Bars: ")
             Text(
                 text = barChartDataModel.bars.size.toString(),
-                style = TextStyle(fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
+                style = TextStyle(
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 18.sp
+                )
             )
         }
 

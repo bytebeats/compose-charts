@@ -6,5 +6,8 @@ package me.bytebeats.views.charts.app.ui
  * Quote: Peasant. Educated. Worker
  */
 enum class Screen {
-    Home, Pie, Bar, Line
+    Home,
+    Pie,
+    Bar,
+    Line;
 }

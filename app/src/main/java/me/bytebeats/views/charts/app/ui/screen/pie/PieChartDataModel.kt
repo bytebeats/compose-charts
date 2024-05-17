@@ -48,17 +48,21 @@ class PieChartDataModel {
         get() = pieChartData.slices
 
     fun addSlice() {
-        pieChartData = pieChartData.copy(slices = slices.toMutableList().apply {
-            add(PieChartData.Slice(randomLength(), randomColor()))
-        }.toList())
+        pieChartData = pieChartData.copy(
+            slices = slices.toMutableList().apply {
+                add(PieChartData.Slice(randomLength(), randomColor()))
+            }.toList()
+        )
     }
 
     fun removeSlice() {
-        pieChartData = pieChartData.copy(slices = slices.toMutableList().apply {
-            val lastSlice = slices.last()
-            colors.add(lastSlice.color)
-            remove(lastSlice)
-        }.toList())
+        pieChartData = pieChartData.copy(
+            slices = slices.toMutableList().apply {
+                val lastSlice = slices.last()
+                colors.add(lastSlice.color)
+                remove(lastSlice)
+            }.toList()
+        )
     }
 
     private fun randomLength(): Float = Random.Default.nextInt(10, 30).toFloat()

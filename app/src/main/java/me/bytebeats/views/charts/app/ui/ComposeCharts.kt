@@ -18,24 +18,26 @@ import me.bytebeats.views.charts.app.ui.theme.ComposeChartsTheme
 
 @Composable
 fun ComposeCharts() {
-  ComposeChartsTheme {
-    ComposeChartsContent()
-  }
+    ComposeChartsTheme {
+        ComposeChartsContent()
+    }
 }
 
 @Composable
 private fun ComposeChartsContent() {
-  Crossfade(
-    targetState = ScreenRouter.currentScreen,
-    label = "Compose Charts"
-  ) { screen ->
-    Surface(color = MaterialTheme.colorScheme.background) {
-      when (screen) {
-        Screen.Pie -> PieChartScreen()
-        Screen.Line -> LineChartScreen()
-        Screen.Bar -> BarChartScreen()
-        else -> HomeScreen()
-      }
+    Crossfade(
+        targetState = ScreenRouter.currentScreen,
+        label = "Compose Charts"
+    ) { screen ->
+        Surface(
+            color = MaterialTheme.colorScheme.background
+        ) {
+            when (screen) {
+                Screen.Pie -> PieChartScreen()
+                Screen.Line -> LineChartScreen()
+                Screen.Bar -> BarChartScreen()
+                else -> HomeScreen()
+            }
+        }
     }
-  }
 }

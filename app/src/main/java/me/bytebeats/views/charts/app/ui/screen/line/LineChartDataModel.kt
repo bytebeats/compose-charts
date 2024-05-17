@@ -32,6 +32,7 @@ class LineChartDataModel {
     )
 
     var horizontalOffset by mutableStateOf(5F)
+
     var pointDrawerType by mutableStateOf(PointDrawerType.Hollow)
     val pointDrawer: IPointDrawer
         get() {

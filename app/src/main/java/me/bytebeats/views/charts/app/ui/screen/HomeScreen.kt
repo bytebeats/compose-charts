@@ -27,33 +27,46 @@ import me.bytebeats.views.charts.app.ui.theme.Margins
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-  Scaffold(topBar = {
-    TopAppBar(title = { Text(text = "Compose Charts") })
-  }) { paddingValues ->
-    HomeScreenContent(Modifier.padding(paddingValues))
-  }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "Compose Charts")
+                }
+            )
+        }
+    ) { paddingValues ->
+        HomeScreenContent(Modifier.padding(paddingValues))
+    }
 }
 
 @Composable
 private fun HomeScreenContent(modifier: Modifier) {
-  Column(
-    modifier = modifier.fillMaxSize(),
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally,
-  ) {
-    ChartScreenSelector(text = "Pie Chart", nextScreen = Screen.Pie)
-    ChartScreenSelector(text = "Line Chart", nextScreen = Screen.Line)
-    ChartScreenSelector(text = "Bar Chart", nextScreen = Screen.Bar)
-  }
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        ChartScreenSelector(text = "Pie Chart", nextScreen = Screen.Pie)
+        ChartScreenSelector(text = "Line Chart", nextScreen = Screen.Line)
+        ChartScreenSelector(text = "Bar Chart", nextScreen = Screen.Bar)
+    }
 }
 
 @Composable
-private fun ChartScreenSelector(text: String, nextScreen: Screen) {
-  Row(modifier = Modifier.padding(horizontal = Margins.horizontal, vertical = Margins.vertical)) {
-    TextButton(onClick = { ScreenRouter.navigate(nextScreen) }) {
-      Text(text = text)
+private fun ChartScreenSelector(
+    text: String,
+    nextScreen: Screen
+) {
+    Row(
+        modifier = Modifier.padding(horizontal = Margins.horizontal, vertical = Margins.vertical)
+    ) {
+        TextButton(
+            onClick = { ScreenRouter.navigate(nextScreen) }
+        ) {
+            Text(text = text)
+        }
     }
-  }
 }
 
 @Preview
