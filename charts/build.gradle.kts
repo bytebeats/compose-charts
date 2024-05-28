@@ -9,8 +9,6 @@ plugins {
     id("signing")
 }
 
-//apply(from = "publish.gradle.kts")
-
 android {
     namespace = "me.bytebeats.views.charts"
     compileSdk = 34
@@ -80,14 +78,14 @@ val sourcesJar by tasks.registering(Jar::class) {
     }
 }
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-
-    val dokkaJavadocTask = tasks.getByName("dokkaJavadoc")
-
-    from(dokkaJavadocTask)
-    dependsOn(dokkaJavadocTask)
-}
+//val javadocJar by tasks.registering(Jar::class) {
+//    archiveClassifier.set("javadoc")
+//
+//    val dokkaJavadocTask = tasks.getByName("dokkaJavadoc")
+//
+//    from(dokkaJavadocTask)
+//    dependsOn(dokkaJavadocTask)
+//}
 
 fun Project.getProperty(key: String?, default: String? = null): String {
     checkPropertyKey(key)
@@ -135,8 +133,8 @@ afterEvaluate {
                     url = project.getRepoUrl()
 
                     credentials {
-                        username = project.getProperty("ossrhUsername")
-                        password = project.getProperty("ossrhPassword")
+                        username = project.getProperty("ossrhUsername", "")
+                        password = project.getProperty("ossrhPassword", "")
                     }
                 }
             }
@@ -152,12 +150,13 @@ afterEvaluate {
                 }
 
                 artifact(sourcesJar.get())
-                artifact(javadocJar.get())
+//                artifact(javadocJar.get())
 
                 pom {
                     groupId = project.getProperty("GROUP_ID")
                     artifactId = project.getProperty("COMPOSE_CHARTS_ARTIFACT_ID")
                     version = project.getProperty("COMPOSE_CHARTS_VERSION")
+                    inceptionYear = project.getProperty("COMPOSE_CHARTS_INCEPTION_YEAR")
 
                     name = project.getProperty("COMPOSE_CHARTS_NAME")
                     description = project.getProperty("COMPOSE_CHARTS_DESCRIPTION")
@@ -172,8 +171,8 @@ afterEvaluate {
                     }
 
                     organization {
-                        name = project.getProperty("ORGANIZATION_NAME")
-                        url = project.getProperty("ORGANIZATION_URL")
+                        name = project.getProperty("ORGANIZATION_NAME", "")
+                        url = project.getProperty("ORGANIZATION_URL", "")
                     }
 
                     developers {
@@ -181,6 +180,7 @@ afterEvaluate {
                             id = project.getProperty("DEVELOPER_ID")
                             name = project.getProperty("DEVELOPER_NAME")
                             url = project.getProperty("DEVELOPER_URL")
+                            email = project.getProperty("DEVELOPER_EMAIL")
                         }
                     }
 
@@ -191,6 +191,30 @@ afterEvaluate {
                             distribution = project.getProperty("LICENCE_DIST")
                         }
                     }
+
+                    issueManagement {
+                        system = project.getProperty("ISSUE_SYSTEM")
+                        url = project.getProperty("ISSUE_URL")
+                    }
+
+                    contributors {
+                        contributor {
+                            name = project.getProperty("CONTRIBUTOR_NAME")
+                            email = project.getProperty("CONTRIBUTOR_EMAIL")
+                            url = project.getProperty("CONTRIBUTOR_URL")
+                            roles.set(listOf("Master", "Maintainer", "Developer"))
+                            timezone = project.getProperty("CONTRIBUTOR_TIMEZONE")
+                        }
+                    }
+
+                    ciManagement {
+                        system = project.getProperty("CI_SYSTEM")
+                        url = project.getProperty("CI_URL")
+                    }
+
+                    distributionManagement {
+                        downloadUrl = getProperty("RELEASES_REPO_URL")
+                    }
                 }
             }
 
@@ -200,9 +224,9 @@ afterEvaluate {
                 // Signing with gpg
                 // and with its signing.keyId & signing.password & signing.secretKeyRingFile
                 // declared in local.properties or ~/.gradle/gradle.properties
-                checkSigningKey("signing.keyId")
-                checkSigningKey("signing.password")
-                checkSigningKey("signing.secretKeyRingFile")
+//                checkSigningKey("signing.keyId")
+//                checkSigningKey("signing.password")
+//                checkSigningKey("signing.secretKeyRingFile")
                 sign(publishing.publications.getByName(publicationName))
                 // or signing with CI/CD
                 // and with its signingKeyId & signingKeyPassword & signingKey
