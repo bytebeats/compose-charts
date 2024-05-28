@@ -80,9 +80,25 @@ val sourcesJar by tasks.registering(Jar::class) {
     }
 }
 
-val dokkaHtml by tasks.getting(DokkaTask::class) {
+tasks.dokkaHtml {
     outputDirectory.set(layout.buildDirectory.dir("dokka"))
+    moduleName.set(getProperty("COMPOSE_CHARTS_NAME"))
+    dokkaSourceSets {
+        configureEach {
+            suppress = false
+            offlineMode = false
+            includeNonPublic = false
+            skipDeprecated = true
+            skipEmptyPackages = true
+            noStdlibLink = true
+            noJdkLink = true
+            noAndroidSdkLink = false
+            jdkVersion = JavaVersion.VERSION_1_8.ordinal + 1
+        }
+    }
 }
+
+val dokkaHtml by tasks.getting(DokkaTask::class)
 
 val javadocJar by tasks.registering(Jar::class) {
     dependsOn(dokkaHtml)
