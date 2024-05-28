@@ -6,6 +6,8 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
 import me.bytebeats.views.charts.bar.render.label.ILabelDrawer
 import me.bytebeats.views.charts.bar.render.xaxis.IXAxisDrawer
+import me.bytebeats.views.charts.util.FLOAT_10
+import me.bytebeats.views.charts.util.FLOAT_100
 
 /**
  * Created by bytebeats on 2021/9/25 : 13:57
@@ -22,7 +24,7 @@ internal fun axisAreas(
     with(drawScope) {
 
         val yAxisTop = labelDrawer.requiredAboveBarHeight(drawScope)
-        val yAxisRight = 50.dp.toPx().coerceAtMost(size.width * 10F / 100F)
+        val yAxisRight = 50.dp.toPx().coerceAtMost(size.width * FLOAT_10 / FLOAT_100)
         val xAxisRight = totalSize.width
         val xAxisTop = totalSize.height - xAxisDrawer.requiredHeight(drawScope)
 

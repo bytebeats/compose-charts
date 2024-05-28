@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import me.bytebeats.views.charts.util.FLOAT_1_5
 
 /**
  * Created by bytebeats on 2021/9/25 : 14:18
@@ -29,7 +30,7 @@ data class SimpleXAxisDrawer(
     }
 
     override fun requiredHeight(drawScope: DrawScope): Float = with(drawScope) {
-        1.5F * axisLineThickness.toPx()
+        FLOAT_1_5 * axisLineThickness.toPx()
     }
 
     override fun drawXAxisLine(

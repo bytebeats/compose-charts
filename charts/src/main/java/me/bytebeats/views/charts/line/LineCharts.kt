@@ -6,6 +6,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import me.bytebeats.views.charts.util.FLOAT_10
+import me.bytebeats.views.charts.util.FLOAT_100
 
 /**
  * Created by bytebeats on 2021/9/24 : 19:26
@@ -19,7 +21,7 @@ fun computeDrawableArea(
     size: Size,
     offset: Float
 ): Rect {
-    val horizontalOffset = xAxisDrawableArea.width * offset / 100F
+    val horizontalOffset = xAxisDrawableArea.width * offset / FLOAT_100
     return Rect(
         left = yAxisDrawableArea.right + horizontalOffset,
         top = 0F,
@@ -46,7 +48,7 @@ fun computeXAxisLabelsDrawableArea(
     xAxisDrawableArea: Rect,
     offset: Float
 ): Rect {
-    val horizontalOffset = xAxisDrawableArea.width * offset / 100F
+    val horizontalOffset = xAxisDrawableArea.width * offset / FLOAT_100
     return Rect(
         left = xAxisDrawableArea.left + horizontalOffset,
         top = xAxisDrawableArea.top,
@@ -59,7 +61,8 @@ fun Density.computeYAxisDrawableArea(
     xAxisLabelSize: Float,
     size: Size
 ): Rect {
-    val right = 50.dp.toPx().coerceAtMost(size.width * 10F / 100F) // 50dp or 10% of chart view width
+    val right =
+        50.dp.toPx().coerceAtMost(size.width * FLOAT_10 / FLOAT_100) // 50dp or 10% of chart view width
     return Rect(
         left = 0F,
         top = 0F,

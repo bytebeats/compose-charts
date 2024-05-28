@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.bytebeats.views.charts.AxisLabelFormatter
 import me.bytebeats.views.charts.toLegacyInt
+import me.bytebeats.views.charts.util.FLOAT_1_5
 
 /**
  * Created by bytebeats on 2021/9/24 : 20:50
@@ -44,7 +45,7 @@ data class SimpleXAxisDrawer(
     }
 
     override fun requireHeight(drawScope: DrawScope): Float = with(drawScope) {
-        1.5F * (labelTextSize.toPx() + axisLineThickness.toPx())
+        FLOAT_1_5 * (labelTextSize.toPx() + axisLineThickness.toPx())
     }
 
     override fun drawXAxisLine(

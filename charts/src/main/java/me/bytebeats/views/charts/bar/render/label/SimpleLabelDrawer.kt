@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import me.bytebeats.views.charts.AxisLabelFormatter
 import me.bytebeats.views.charts.toLegacyInt
+import me.bytebeats.views.charts.util.FLOAT_1_5
 
 /**
  * Created by bytebeats on 2021/9/25 : 14:01
@@ -30,7 +31,7 @@ data class SimpleLabelDrawer(
     }
 
     override fun requiredAboveBarHeight(drawScope: DrawScope): Float = when (drawLocation) {
-        DrawLocation.Outside -> 3F / 2F * labelTextHeight(drawScope)
+        DrawLocation.Outside -> FLOAT_1_5 * labelTextHeight(drawScope)
         else -> 0F
     }
 
@@ -59,7 +60,7 @@ data class SimpleLabelDrawer(
     }
 
     private fun labelTextHeight(drawScope: DrawScope): Float = with(drawScope) {
-        mLabelTextArea ?: (1.5F * labelTextSize.toPx())
+        mLabelTextArea ?: (FLOAT_1_5 * labelTextSize.toPx())
     }
 
     private fun paint(drawScope: DrawScope): android.graphics.Paint = with(drawScope) {

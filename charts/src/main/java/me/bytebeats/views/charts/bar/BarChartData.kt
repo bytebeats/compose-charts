@@ -1,6 +1,7 @@
 package me.bytebeats.views.charts.bar
 
 import androidx.compose.ui.graphics.Color
+import me.bytebeats.views.charts.util.FLOAT_100
 
 /**
  * Created by bytebeats on 2021/9/25 : 13:52 E-mail: happychinapc@gmail.com
@@ -14,7 +15,7 @@ data class BarChartData(
 ) {
 
     init {
-        require(padBy in 0F..100F) {
+        require(padBy in 0F..FLOAT_100) {
             "padBy must be between 0F and 100F, included"
         }
         require(maxBarValue >= bars.maxOf { it.value }) {
@@ -30,10 +31,10 @@ data class BarChartData(
         }
 
     val maxY: Float
-        get() = yMinMaxValues.second + (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
+        get() = yMinMaxValues.second + (yMinMaxValues.second - yMinMaxValues.first) * padBy / FLOAT_100
     val minY: Float
         get() = if (startAtZero) 0F
-        else yMinMaxValues.first - (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
+        else yMinMaxValues.first - (yMinMaxValues.second - yMinMaxValues.first) * padBy / FLOAT_100
 
     data class Bar(
         val value: Float,
