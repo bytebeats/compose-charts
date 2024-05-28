@@ -1,10 +1,12 @@
 import com.android.build.gradle.LibraryExtension
 import org.gradle.jvm.tasks.Jar
+import org.jetbrains.dokka.gradle.DokkaTask
 import java.net.URI
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.dokka)
     id("maven-publish")
     id("signing")
 }
@@ -78,14 +80,15 @@ val sourcesJar by tasks.registering(Jar::class) {
     }
 }
 
-//val javadocJar by tasks.registering(Jar::class) {
-//    archiveClassifier.set("javadoc")
-//
-//    val dokkaJavadocTask = tasks.getByName("dokkaJavadoc")
-//
-//    from(dokkaJavadocTask)
-//    dependsOn(dokkaJavadocTask)
-//}
+val dokkaHtml by tasks.getting(DokkaTask::class) {
+    outputDirectory.set(layout.buildDirectory.dir("dokka"))
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+    dependsOn(dokkaHtml)
+    archiveClassifier.set("javadoc")
+    from(dokkaHtml.outputDirectory)
+}
 
 fun Project.getProperty(key: String?, default: String? = null): String {
     checkPropertyKey(key)
@@ -150,7 +153,7 @@ afterEvaluate {
                 }
 
                 artifact(sourcesJar.get())
-//                artifact(javadocJar.get())
+                artifact(javadocJar.get())
 
                 pom {
                     groupId = project.getProperty("GROUP_ID")
