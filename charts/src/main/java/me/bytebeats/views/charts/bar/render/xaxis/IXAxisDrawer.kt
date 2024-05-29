@@ -10,7 +10,22 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface IXAxisDrawer {
+
+    /**
+     * Required height
+     *
+     * @param drawScope the draw scope to require height
+     * @return required height
+     */
     fun requiredHeight(drawScope: DrawScope): Float
+
+    /**
+     * Draw x axis line
+     *
+     * @param drawScope the scope to draw
+     * @param canvas the canvas to draw on
+     * @param drawableArea the area to draw a drawable
+     */
     fun drawXAxisLine(
         drawScope: DrawScope,
         canvas: Canvas,

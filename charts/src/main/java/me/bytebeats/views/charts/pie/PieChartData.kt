@@ -14,5 +14,8 @@ data class PieChartData(val slices: List<Slice>) {
             return slices.map { it.value }.sum()
         }
 
-    data class Slice(val value: Float, val color: Color)
+    data class Slice(
+        val value: Float,
+        val color: Color
+    )
 }

@@ -10,12 +10,30 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface IYAxisDrawer {
+
+    /**
+     * Draw axis line
+     *
+     * @param drawScope the scope to draw
+     * @param canvas the canvas to draw on
+     * @param drawableArea the area to draw a drawable
+     */
     fun drawAxisLine(
         drawScope: DrawScope,
         canvas: Canvas,
         drawableArea: Rect
     )
 
+
+    /**
+     * Draw axis labels
+     *
+     * @param drawScope the scope to draw
+     * @param canvas the canvas to draw on
+     * @param drawableArea the drawable area
+     * @param minValue the min value of the y axis data
+     * @param maxValue the max value of the y axis data
+     */
     fun drawAxisLabels(
         drawScope: DrawScope,
         canvas: Canvas,

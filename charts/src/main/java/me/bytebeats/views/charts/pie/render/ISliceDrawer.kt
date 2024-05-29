@@ -11,6 +11,17 @@ import me.bytebeats.views.charts.pie.PieChartData
  * Quote: Peasant. Educated. Worker
  */
 interface ISliceDrawer {
+
+
+    /**
+     * Draw slice
+     * @param drawScope the scope to draw in
+     * @param canvas the canvas to draw on
+     * @param area the area to draw
+     * @param startAngle the start angle to draw a slice
+     * @param sweepAngle the sweep angle to draw a slice
+     * @param slice the slice data to draw
+     */
     fun drawSlice(
         drawScope: DrawScope,
         canvas: Canvas,

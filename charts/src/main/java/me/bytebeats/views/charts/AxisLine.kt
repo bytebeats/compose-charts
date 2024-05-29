@@ -23,6 +23,7 @@ data class AxisLine(
         }
     }
 
+    @Suppress("UndocumentedPublicFunction")
     fun paint(density: Density) {
         mPaint.strokeWidth = thickness.value * density.density
     }

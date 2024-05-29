@@ -10,6 +10,14 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface ILineDrawer {
+
+    /**
+     * Draw line
+     *
+     * @param drawScope the scope to draw in
+     * @param canvas the canvas to draw on
+     * @param linePath the line path to draw
+     */
     fun drawLine(
         drawScope: DrawScope,
         canvas: Canvas,

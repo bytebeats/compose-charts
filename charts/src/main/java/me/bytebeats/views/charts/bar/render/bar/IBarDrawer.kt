@@ -11,6 +11,15 @@ import me.bytebeats.views.charts.bar.BarChartData
  * Quote: Peasant. Educated. Worker
  */
 interface IBarDrawer {
+
+    /**
+     * Draw bar
+     *
+     * @param drawScope the scope to draw
+     * @param canvas the Canvas to draw on
+     * @param barArea the bar area to draw
+     * @param bar the bar data
+     */
     fun drawBar(
         drawScope: DrawScope,
         canvas: Canvas,

@@ -15,7 +15,7 @@ import me.bytebeats.views.charts.util.FLOAT_100
  * Quote: Peasant. Educated. Worker
  */
 
-fun computeDrawableArea(
+internal fun computeDrawableArea(
     xAxisDrawableArea: Rect,
     yAxisDrawableArea: Rect,
     size: Size,
@@ -30,7 +30,7 @@ fun computeDrawableArea(
     )
 }
 
-fun computeXAxisDrawableArea(
+internal fun computeXAxisDrawableArea(
     yAxisWidth: Float,
     labelHeight: Float,
     size: Size
@@ -44,7 +44,7 @@ fun computeXAxisDrawableArea(
     )
 }
 
-fun computeXAxisLabelsDrawableArea(
+internal fun computeXAxisLabelsDrawableArea(
     xAxisDrawableArea: Rect,
     offset: Float
 ): Rect {
@@ -57,7 +57,7 @@ fun computeXAxisLabelsDrawableArea(
     )
 }
 
-fun Density.computeYAxisDrawableArea(
+internal fun Density.computeYAxisDrawableArea(
     xAxisLabelSize: Float,
     size: Size
 ): Rect {
@@ -71,7 +71,7 @@ fun Density.computeYAxisDrawableArea(
     )
 }
 
-fun computePointLocation(
+internal fun computePointLocation(
     drawableArea: Rect,
     lineChartData: LineChartData,
     point: LineChartData.Point,
@@ -85,7 +85,7 @@ fun computePointLocation(
     )
 }
 
-fun withProgress(
+internal fun withProgress(
     index: Int,
     lineChartData: LineChartData,
     transitionProgress: Float,
@@ -103,7 +103,7 @@ fun withProgress(
     }
 }
 
-fun computeLinePath(
+internal fun computeLinePath(
     drawableArea: Rect,
     lineChartData: LineChartData,
     transitionProgress: Float
@@ -130,7 +130,7 @@ fun computeLinePath(
     }
 }
 
-fun computeFillPath(
+internal fun computeFillPath(
     drawableArea: Rect,
     lineChartData: LineChartData,
     transitionProgress: Float
