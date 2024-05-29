@@ -47,7 +47,9 @@ fun BarChartScreen() {
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    IconButton(onClick = { ScreenRouter.navigateHome() }) {
+                    IconButton(
+                        onClick = { ScreenRouter.navigateHome() }
+                    ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Go back home"
@@ -72,7 +74,8 @@ private fun BarChartContent(modifier: Modifier = Modifier) {
         BarChartRow(barChartDataModel = barChartDataModel)
         DrawLabelLocation(
             barChartDataModel = barChartDataModel,
-            newLocation = { barChartDataModel.labelLocation = it })
+            newLocation = { barChartDataModel.labelLocation = it }
+        )
         AddOrRemoveBar(barChartDataModel = barChartDataModel)
     }
 }

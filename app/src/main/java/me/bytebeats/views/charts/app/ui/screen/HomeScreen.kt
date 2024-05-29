@@ -47,9 +47,18 @@ private fun HomeScreenContent(modifier: Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        ChartScreenSelector(text = "Pie Chart", nextScreen = Screen.Pie)
-        ChartScreenSelector(text = "Line Chart", nextScreen = Screen.Line)
-        ChartScreenSelector(text = "Bar Chart", nextScreen = Screen.Bar)
+        ChartScreenSelector(
+            text = "Pie Chart",
+            nextScreen = Screen.Pie
+        )
+        ChartScreenSelector(
+            text = "Line Chart",
+            nextScreen = Screen.Line
+        )
+        ChartScreenSelector(
+            text = "Bar Chart",
+            nextScreen = Screen.Bar
+        )
     }
 }
 
@@ -59,7 +68,10 @@ private fun ChartScreenSelector(
     nextScreen: Screen
 ) {
     Row(
-        modifier = Modifier.padding(horizontal = Margins.horizontal, vertical = Margins.vertical)
+        modifier = Modifier.padding(
+            horizontal = Margins.horizontal,
+            vertical = Margins.vertical
+        )
     ) {
         TextButton(
             onClick = { ScreenRouter.navigate(nextScreen) }

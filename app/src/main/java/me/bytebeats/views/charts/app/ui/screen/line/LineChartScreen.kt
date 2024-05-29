@@ -41,7 +41,8 @@ fun LineChartScreen() {
             TopAppBar(
                 navigationIcon = {
                     IconButton(
-                        onClick = { ScreenRouter.navigateHome() }) {
+                        onClick = { ScreenRouter.navigateHome() }
+                    ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Go back home"

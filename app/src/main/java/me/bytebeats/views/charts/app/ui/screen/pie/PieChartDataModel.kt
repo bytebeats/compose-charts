@@ -1,6 +1,7 @@
 package me.bytebeats.views.charts.app.ui.screen.pie
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
@@ -13,7 +14,7 @@ import kotlin.random.Random
  * Quote: Peasant. Educated. Worker
  */
 class PieChartDataModel {
-    private val colors = mutableListOf<Color>(
+    private val colors = mutableListOf(
         Color(0XFFF44336),
         Color(0XFFE91E63),
         Color(0XFF9C27B0),
@@ -29,17 +30,23 @@ class PieChartDataModel {
         Color(0XFF607D8B)
     )
 
-    var sliceThickness by mutableStateOf(25F)
+    var sliceThickness by mutableFloatStateOf(25F)
 
     var pieChartData by mutableStateOf(
         PieChartData(
             slices = listOf(
                 PieChartData.Slice(
-                    randomLength(),
-                    randomColor()
+                    value = randomLength(),
+                    color = randomColor()
                 ),
-                PieChartData.Slice(randomLength(), randomColor()),
-                PieChartData.Slice(randomLength(), randomColor())
+                PieChartData.Slice(
+                    value = randomLength(),
+                    color = randomColor()
+                ),
+                PieChartData.Slice(
+                    value = randomLength(),
+                    color = randomColor()
+                )
             )
         )
     )
@@ -50,7 +57,12 @@ class PieChartDataModel {
     fun addSlice() {
         pieChartData = pieChartData.copy(
             slices = slices.toMutableList().apply {
-                add(PieChartData.Slice(randomLength(), randomColor()))
+                add(
+                    PieChartData.Slice(
+                        value = randomLength(),
+                        color = randomColor()
+                    )
+                )
             }.toList()
         )
     }
