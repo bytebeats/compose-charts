@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import me.bytebeats.views.charts.pie.PieChartData
+import me.bytebeats.views.charts.util.FLOAT_200
 
 /**
  * Created by bytebeats on 2021/9/24 : 14:36
@@ -30,7 +31,7 @@ class SimpleSliceDrawer(private val sliceThickness: Float = 25F) : ISliceDrawer 
 
     private fun computeSectorThickness(area: Size): Float {
         val minSize = area.width.coerceAtMost(area.height)
-        return sliceThickness * minSize / 200F
+        return sliceThickness * minSize / FLOAT_200
     }
 
     private fun computeDrawableArea(area: Size): Rect {

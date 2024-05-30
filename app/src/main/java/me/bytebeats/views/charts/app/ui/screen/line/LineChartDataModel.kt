@@ -1,6 +1,7 @@
 package me.bytebeats.views.charts.app.ui.screen.line
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import me.bytebeats.views.charts.line.LineChartData
@@ -31,7 +32,8 @@ class LineChartDataModel {
         )
     )
 
-    var horizontalOffset by mutableStateOf(5F)
+    var horizontalOffset by mutableFloatStateOf(5F)
+
     var pointDrawerType by mutableStateOf(PointDrawerType.Hollow)
     val pointDrawer: IPointDrawer
         get() {

@@ -6,6 +6,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import me.bytebeats.views.charts.util.FLOAT_10
+import me.bytebeats.views.charts.util.FLOAT_100
 
 /**
  * Created by bytebeats on 2021/9/24 : 19:26
@@ -13,13 +15,13 @@ import androidx.compose.ui.unit.dp
  * Quote: Peasant. Educated. Worker
  */
 
-fun computeDrawableArea(
+internal fun computeDrawableArea(
     xAxisDrawableArea: Rect,
     yAxisDrawableArea: Rect,
     size: Size,
     offset: Float
 ): Rect {
-    val horizontalOffset = xAxisDrawableArea.width * offset / 100F
+    val horizontalOffset = xAxisDrawableArea.width * offset / FLOAT_100
     return Rect(
         left = yAxisDrawableArea.right + horizontalOffset,
         top = 0F,
@@ -28,13 +30,25 @@ fun computeDrawableArea(
     )
 }
 
-fun computeXAxisDrawableArea(yAxisWidth: Float, labelHeight: Float, size: Size): Rect {
+internal fun computeXAxisDrawableArea(
+    yAxisWidth: Float,
+    labelHeight: Float,
+    size: Size
+): Rect {
     val top = size.height - labelHeight
-    return Rect(left = yAxisWidth, top = top, right = size.width, bottom = size.height)
+    return Rect(
+        left = yAxisWidth,
+        top = top,
+        right = size.width,
+        bottom = size.height
+    )
 }
 
-fun computeXAxisLabelsDrawableArea(xAxisDrawableArea: Rect, offset: Float): Rect {
-    val horizontalOffset = xAxisDrawableArea.width * offset / 100F
+internal fun computeXAxisLabelsDrawableArea(
+    xAxisDrawableArea: Rect,
+    offset: Float
+): Rect {
+    val horizontalOffset = xAxisDrawableArea.width * offset / FLOAT_100
     return Rect(
         left = xAxisDrawableArea.left + horizontalOffset,
         top = xAxisDrawableArea.top,
@@ -43,12 +57,21 @@ fun computeXAxisLabelsDrawableArea(xAxisDrawableArea: Rect, offset: Float): Rect
     )
 }
 
-fun Density.computeYAxisDrawableArea(xAxisLabelSize: Float, size: Size): Rect {
-    val right = 50.dp.toPx().coerceAtMost(size.width * 10F / 100F)//50dp or 10% of chart view width
-    return Rect(left = 0F, top = 0F, right = right, bottom = size.height - xAxisLabelSize)
+internal fun Density.computeYAxisDrawableArea(
+    xAxisLabelSize: Float,
+    size: Size
+): Rect {
+    val right =
+        50.dp.toPx().coerceAtMost(size.width * FLOAT_10 / FLOAT_100) // 50dp or 10% of chart view width
+    return Rect(
+        left = 0F,
+        top = 0F,
+        right = right,
+        bottom = size.height - xAxisLabelSize
+    )
 }
 
-fun computePointLocation(
+internal fun computePointLocation(
     drawableArea: Rect,
     lineChartData: LineChartData,
     point: LineChartData.Point,
@@ -62,7 +85,7 @@ fun computePointLocation(
     )
 }
 
-fun withProgress(
+internal fun withProgress(
     index: Int,
     lineChartData: LineChartData,
     transitionProgress: Float,
@@ -80,7 +103,7 @@ fun withProgress(
     }
 }
 
-fun computeLinePath(
+internal fun computeLinePath(
     drawableArea: Rect,
     lineChartData: LineChartData,
     transitionProgress: Float
@@ -107,7 +130,7 @@ fun computeLinePath(
     }
 }
 
-fun computeFillPath(
+internal fun computeFillPath(
     drawableArea: Rect,
     lineChartData: LineChartData,
     transitionProgress: Float
@@ -122,16 +145,16 @@ fun computeFillPath(
                 lineTo(drawableArea.left, pointLocation.y)
                 lineTo(pointLocation.x, pointLocation.y)
             } else {
-                if (progress <= 1F) {
+                prePointX = if (progress <= 1F) {
                     val preX = prePointLocation?.x ?: 0F
                     val preY = prePointLocation?.y ?: 0F
                     val tx = (pointLocation.x - preX) * progress + preX
                     val ty = (pointLocation.y - preY) * progress + preY
                     lineTo(tx, ty)
-                    prePointX = tx
+                    tx
                 } else {
                     lineTo(pointLocation.x, pointLocation.y)
-                    prePointX = pointLocation.x
+                    pointLocation.x
                 }
             }
             prePointLocation = pointLocation

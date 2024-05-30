@@ -1,5 +1,7 @@
 package me.bytebeats.views.charts.line
 
+import me.bytebeats.views.charts.util.FLOAT_100
+
 /**
  * Created by bytebeats on 2021/9/24 : 19:39
  * E-mail: happychinapc@gmail.com
@@ -7,11 +9,11 @@ package me.bytebeats.views.charts.line
  */
 data class LineChartData(
     val points: List<Point>,
-    val padBy: Float = 20F,//percentage we pad yValue by
+    val padBy: Float = 20F,// percentage we pad yValue by
     val startAtZero: Boolean = false
 ) {
     init {
-        require(padBy in 0F..100F) {
+        require(padBy in 0F..FLOAT_100) {
             "padBy must be between 0F and 100F, included"
         }
     }
@@ -23,13 +25,17 @@ data class LineChartData(
             return minValue to maxValue
         }
 
-    internal val maxY: Float
-        get() = yMinMaxValues.second + (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
-    internal val minY: Float
-        get() = if (startAtZero) 0F else yMinMaxValues.first - (yMinMaxValues.second - yMinMaxValues.first) * padBy / 100F
+    val maxY: Float
+        get() = yMinMaxValues.second + (yMinMaxValues.second - yMinMaxValues.first) * padBy / FLOAT_100
+    val minY: Float
+        get() = if (startAtZero) 0F
+        else yMinMaxValues.first - (yMinMaxValues.second - yMinMaxValues.first) * padBy / FLOAT_100
 
-    internal val yRange: Float
+    val yRange: Float
         get() = maxY - minY
 
-    data class Point(val value: Float, val label: String)
+    data class Point(
+        val value: Float,
+        val label: String
+    )
 }

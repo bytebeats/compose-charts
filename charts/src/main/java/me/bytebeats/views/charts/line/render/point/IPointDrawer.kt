@@ -10,5 +10,17 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface IPointDrawer {
-    fun drawPoint(drawScope: DrawScope, canvas: Canvas, center: Offset)
+
+    /**
+     * Draw point
+     *
+     * @param drawScope the scope to draw in
+     * @param canvas the canvas to draw on
+     * @param center the center point to draw a point
+     */
+    fun drawPoint(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        center: Offset
+    )
 }

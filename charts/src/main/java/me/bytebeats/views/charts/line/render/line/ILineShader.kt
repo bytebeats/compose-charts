@@ -10,5 +10,17 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface ILineShader {
-    fun fillLine(drawScope: DrawScope, canvas: Canvas, fillPath: Path)
+
+    /**
+     * fill slice
+     *
+     * @param drawScope the scope to draw in
+     * @param canvas the canvas to draw on
+     * @param fillPath the path to fill
+     */
+    fun fillLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        fillPath: Path
+    )
 }

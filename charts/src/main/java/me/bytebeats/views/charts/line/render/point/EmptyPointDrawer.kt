@@ -10,7 +10,11 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 object EmptyPointDrawer : IPointDrawer {
-    override fun drawPoint(drawScope: DrawScope, canvas: Canvas, center: Offset) {
+    override fun drawPoint(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        center: Offset
+    ) {
         //empty point, we do nothing here.
     }
 }

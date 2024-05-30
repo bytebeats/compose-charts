@@ -12,7 +12,10 @@ import androidx.compose.ui.unit.dp
  * E-mail: happychinapc@gmail.com
  * Quote: Peasant. Educated. Worker
  */
-data class AxisLine(val thickness: Dp = 1.5.dp, val color: Color = Color.Gray) {
+data class AxisLine(
+    val thickness: Dp = 1.5.dp,
+    val color: Color = Color.Gray
+) {
     private val mPaint by lazy {
         Paint().apply {
             color = this@AxisLine.color
@@ -20,6 +23,7 @@ data class AxisLine(val thickness: Dp = 1.5.dp, val color: Color = Color.Gray) {
         }
     }
 
+    @Suppress("UndocumentedPublicFunction")
     fun paint(density: Density) {
         mPaint.strokeWidth = thickness.value * density.density
     }

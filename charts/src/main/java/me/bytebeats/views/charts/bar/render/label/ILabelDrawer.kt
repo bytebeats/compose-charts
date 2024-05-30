@@ -10,8 +10,34 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
  * Quote: Peasant. Educated. Worker
  */
 interface ILabelDrawer {
+
+
+    /**
+     * Required x axis height
+     *
+     * @param drawScope the scope to draw in
+     * @return required height
+     */
     fun requiredXAxisHeight(drawScope: DrawScope): Float = 0F
+
+
+    /**
+     * Required above bar height
+     *
+     * @param drawScope the scope to draw in
+     * @return required height
+     */
     fun requiredAboveBarHeight(drawScope: DrawScope): Float = 0F
+
+    /**
+     * Draw label
+     *
+     * @param drawScope the scope to draw in
+     * @param canvas the canvas to draw on
+     * @param label the label to draw on the axis
+     * @param barArea the area to draw a bar
+     * @param xAxisArea the x axis area to draw
+     */
     fun drawLabel(
         drawScope: DrawScope,
         canvas: Canvas,

@@ -16,8 +16,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     ComposeCharts()
 }

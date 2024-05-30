@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.PaintingStyle
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import me.bytebeats.views.charts.util.FLOAT_1_5
 
 /**
  * Created by bytebeats on 2021/9/25 : 14:18
@@ -16,8 +17,8 @@ import androidx.compose.ui.unit.dp
  * Quote: Peasant. Educated. Worker
  */
 data class SimpleXAxisDrawer(
-    private val axisLineThickness: Dp = 1.dp,
-    private val axisLineColor: Color = Color.Black
+    val axisLineThickness: Dp = 1.dp,
+    val axisLineColor: Color = Color.Black
 ) : IXAxisDrawer {
 
     private val mPaint by lazy {
@@ -29,10 +30,14 @@ data class SimpleXAxisDrawer(
     }
 
     override fun requiredHeight(drawScope: DrawScope): Float = with(drawScope) {
-        1.5F * axisLineThickness.toPx()
+        FLOAT_1_5 * axisLineThickness.toPx()
     }
 
-    override fun drawXAxisLine(drawScope: DrawScope, canvas: Canvas, drawableArea: Rect) {
+    override fun drawXAxisLine(
+        drawScope: DrawScope,
+        canvas: Canvas,
+        drawableArea: Rect
+    ) {
         with(drawScope) {
             val lineThickness = axisLineThickness.toPx()
             val y = drawableArea.top + lineThickness / 2F

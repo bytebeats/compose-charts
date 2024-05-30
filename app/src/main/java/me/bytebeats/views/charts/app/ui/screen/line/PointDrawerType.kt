@@ -8,5 +8,5 @@ package me.bytebeats.views.charts.app.ui.screen.line
 enum class PointDrawerType {
     None,
     Filled,
-    Hollow
+    Hollow;
 }
