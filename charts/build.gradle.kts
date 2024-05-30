@@ -12,6 +12,9 @@ plugins {
     id("signing")
 }
 
+group = getProperty("GROUP_ID")
+version = getProperty("COMPOSE_CHARTS_VERSION")
+
 android {
     namespace = "me.bytebeats.views.charts"
     compileSdk = 34
@@ -81,9 +84,13 @@ val sourcesJar by tasks.registering(Jar::class) {
     }
 }
 
+tasks.withType(GenerateModuleMetadata::class).configureEach {
+    dependsOn(sourcesJar)
+}
+
 tasks.dokkaHtml {
     outputDirectory.set(layout.buildDirectory.dir("dokka"))
-    moduleName.set(getProperty("COMPOSE_CHARTS_NAME"))
+    moduleName.set(getProperty("MODULE_NAME"))
     dokkaSourceSets {
         configureEach {
             suppress = false
@@ -107,6 +114,61 @@ val javadocJar by tasks.registering(Jar::class) {
     from(dokkaHtml.outputDirectory)
 }
 
+//tasks {
+//    val sourceFiles = android.sourceSets.getByName("main").java.srcDirs
+//
+//    register<Javadoc>("withJavadoc") {
+//        isFailOnError = false
+//
+//        // the code needs to be compiled before we can create the Javadoc
+//        dependsOn(android.libraryVariants.toList().last().javaCompileProvider)
+//
+//        if (!project.plugins.hasPlugin("org.jetbrains.kotlin.android")) {
+//            setSource(sourceFiles)
+//        }
+//
+//        // add Android runtime classpath
+//        android.bootClasspath.forEach { classpath += project.fileTree(it) }
+//
+//        // add classpath for all dependencies
+//        android.libraryVariants.forEach { variant ->
+//            variant.javaCompileProvider.get().classpath.files.forEach { file ->
+//                classpath += project.fileTree(file)
+//            }
+//        }
+//
+//        // We don't need javadoc for internals.
+//        exclude("**/internal/*")
+//
+//        // Append Java 8 and Android references
+//        val options = options as StandardJavadocDocletOptions
+//        options.links("https://developer.android.com/reference")
+//        options.links("https://docs.oracle.com/javase/8/docs/api/")
+//
+//        // Workaround for the following error when running on on JDK 9+
+//        // "The code being documented uses modules but the packages defined in ... are in the unnamed module."
+//        if (JavaVersion.current() >= JavaVersion.VERSION_1_9) {
+//            options.addStringOption("-release", "8")
+//        }
+//    }
+//
+//    register<Jar>("withJavadocJar") {
+//        archiveClassifier.set("javadoc")
+//        dependsOn(named("withJavadoc"))
+//        val destination = named<Javadoc>("withJavadoc").get().destinationDir
+//        from(destination)
+//    }
+//
+//    register<Jar>("withSourcesJar") {
+//        archiveClassifier.set("sources")
+//        from(sourceFiles)
+//    }
+//
+//    withType(GenerateModuleMetadata::class).configureEach {
+//        dependsOn(getByName("withSourcesJar"))
+//    }
+//}
+
 fun Project.getProperty(key: String?, default: String? = null): String {
     checkPropertyKey(key)
     return properties[key]?.toString() ?: System.getProperty(key!!, default)
@@ -125,7 +187,7 @@ fun Project.checkSigningKey(signingKey: String?) {
     checkPropertyKey(signingKey)
     signingKey?.let { key ->
         if (hasProperty(key).not() && System.getProperties().containsKey(key).not()) {
-            throw IllegalStateException("$signingKey is not found")
+            throw IllegalStateException("$signingKey has to be declared in local.properties or ~/.gradle/gradle.properties")
         }
     }
 }
@@ -149,7 +211,7 @@ afterEvaluate {
             // 1. configure repositories
             repositories {
                 maven {
-                    name = project.getProperty("COMPOSE_CHARTS_ARTIFACT_ID")
+                    name = project.getProperty("REPO_NAME")
                     url = project.getRepoUrl()
 
                     credentials {
@@ -160,7 +222,7 @@ afterEvaluate {
             }
 
             // 2. configure publication
-            val publicationName = project.getProperty("COMPOSE_CHARTS_NAME", "release")
+            val publicationName = project.getProperty("PUBLICATION_NAME", "release")
             create<MavenPublication>(publicationName) {
 
                 if (project.plugins.hasPlugin(libs.plugins.android.library.get().pluginId)) {
@@ -172,13 +234,16 @@ afterEvaluate {
                 artifact(sourcesJar.get())
                 artifact(javadocJar.get())
 
+//                artifact(tasks.named<Jar>("withJavadocJar"))
+//                artifact(tasks.named<Jar>("withSourcesJar"))
+
                 pom {
                     groupId = project.getProperty("GROUP_ID")
                     artifactId = project.getProperty("COMPOSE_CHARTS_ARTIFACT_ID")
                     version = project.getProperty("COMPOSE_CHARTS_VERSION")
                     inceptionYear = project.getProperty("COMPOSE_CHARTS_INCEPTION_YEAR")
 
-                    name = project.getProperty("COMPOSE_CHARTS_NAME")
+                    name = project.getProperty("MODULE_NAME")
                     description = project.getProperty("COMPOSE_CHARTS_DESCRIPTION")
                     url = project.getProperty("COMPOSE_CHARTS_URL")
 
