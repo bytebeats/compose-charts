@@ -114,61 +114,6 @@ val javadocJar by tasks.registering(Jar::class) {
     from(dokkaHtml.outputDirectory)
 }
 
-//tasks {
-//    val sourceFiles = android.sourceSets.getByName("main").java.srcDirs
-//
-//    register<Javadoc>("withJavadoc") {
-//        isFailOnError = false
-//
-//        // the code needs to be compiled before we can create the Javadoc
-//        dependsOn(android.libraryVariants.toList().last().javaCompileProvider)
-//
-//        if (!project.plugins.hasPlugin("org.jetbrains.kotlin.android")) {
-//            setSource(sourceFiles)
-//        }
-//
-//        // add Android runtime classpath
-//        android.bootClasspath.forEach { classpath += project.fileTree(it) }
-//
-//        // add classpath for all dependencies
-//        android.libraryVariants.forEach { variant ->
-//            variant.javaCompileProvider.get().classpath.files.forEach { file ->
-//                classpath += project.fileTree(file)
-//            }
-//        }
-//
-//        // We don't need javadoc for internals.
-//        exclude("**/internal/*")
-//
-//        // Append Java 8 and Android references
-//        val options = options as StandardJavadocDocletOptions
-//        options.links("https://developer.android.com/reference")
-//        options.links("https://docs.oracle.com/javase/8/docs/api/")
-//
-//        // Workaround for the following error when running on on JDK 9+
-//        // "The code being documented uses modules but the packages defined in ... are in the unnamed module."
-//        if (JavaVersion.current() >= JavaVersion.VERSION_1_9) {
-//            options.addStringOption("-release", "8")
-//        }
-//    }
-//
-//    register<Jar>("withJavadocJar") {
-//        archiveClassifier.set("javadoc")
-//        dependsOn(named("withJavadoc"))
-//        val destination = named<Javadoc>("withJavadoc").get().destinationDir
-//        from(destination)
-//    }
-//
-//    register<Jar>("withSourcesJar") {
-//        archiveClassifier.set("sources")
-//        from(sourceFiles)
-//    }
-//
-//    withType(GenerateModuleMetadata::class).configureEach {
-//        dependsOn(getByName("withSourcesJar"))
-//    }
-//}
-
 fun Project.getProperty(key: String?, default: String? = null): String {
     checkPropertyKey(key)
     return properties[key]?.toString() ?: System.getProperty(key!!, default)
@@ -233,9 +178,6 @@ afterEvaluate {
 
                 artifact(sourcesJar.get())
                 artifact(javadocJar.get())
-
-//                artifact(tasks.named<Jar>("withJavadocJar"))
-//                artifact(tasks.named<Jar>("withSourcesJar"))
 
                 pom {
                     groupId = project.getProperty("GROUP_ID")

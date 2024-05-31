@@ -59,6 +59,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation(project(":charts"))
-    // implementation(libs.compose.charts)
+//    implementation(project(":charts"))
+     implementation(libs.compose.charts)
 }
