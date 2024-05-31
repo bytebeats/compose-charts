@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import me.bytebeats.views.charts.app.ui.Screen
 import me.bytebeats.views.charts.app.ui.ScreenRouter
-import me.bytebeats.views.charts.app.ui.theme.Margins
+import me.bytebeats.views.charts.app.ui.theme.Margin
 
 /**
  * Created by bytebeats on 2021/9/30 : 11:43
@@ -69,8 +69,8 @@ private fun ChartScreenSelector(
 ) {
     Row(
         modifier = Modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
+            horizontal = Margin.horizontal,
+            vertical = Margin.vertical
         )
     ) {
         TextButton(

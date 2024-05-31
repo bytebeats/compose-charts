@@ -74,7 +74,7 @@ class BarChartDataModel {
             field = value
         }
 
-    fun addBar() {
+    internal fun addBar() {
         barChartData = barChartData.copy(bars = bars.toMutableList().apply {
             add(
                 BarChartData.Bar(
@@ -86,7 +86,7 @@ class BarChartDataModel {
         }.toList())
     }
 
-    fun removeBar() {
+    internal fun removeBar() {
         barChartData = barChartData.copy(bars = bars.toMutableList().apply {
             val lastBar = bars.last()
             colors.add(lastBar.color)
