@@ -24,7 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import me.bytebeats.views.charts.app.ui.ScreenRouter
-import me.bytebeats.views.charts.app.ui.theme.Margins
+import me.bytebeats.views.charts.app.ui.theme.Margin
 import me.bytebeats.views.charts.line.LineChart
 
 /**
@@ -65,8 +65,8 @@ private fun LineChartContent(
 
     Column(
         modifier = modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
+            horizontal = Margin.horizontal,
+            vertical = Margin.vertical
         )
     ) {
         LineChartRow(lineChartDataModel = lineChartData)
@@ -95,8 +95,8 @@ private fun HorizontalOffsetSelector(lineChartDataModel: LineChartDataModel) {
     val pointDrawType = lineChartDataModel.pointDrawerType
     Column(
         modifier = Modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
+            horizontal = Margin.horizontal,
+            vertical = Margin.vertical
         ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -106,8 +106,8 @@ private fun HorizontalOffsetSelector(lineChartDataModel: LineChartDataModel) {
                 .fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
                 .padding(
-                    horizontal = Margins.horizontal,
-                    vertical = Margins.vertical
+                    horizontal = Margin.horizontal,
+                    vertical = Margin.vertical
                 ),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
@@ -126,7 +126,7 @@ private fun HorizontalOffsetSelector(lineChartDataModel: LineChartDataModel) {
 @Composable
 private fun OffsetProgress(lineChartDataModel: LineChartDataModel) {
     Column(
-        modifier = Modifier.padding(horizontal = Margins.horizontal),
+        modifier = Modifier.padding(horizontal = Margin.horizontal),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Offset")
@@ -134,8 +134,8 @@ private fun OffsetProgress(lineChartDataModel: LineChartDataModel) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    horizontal = Margins.horizontal,
-                    vertical = Margins.vertical
+                    horizontal = Margin.horizontal,
+                    vertical = Margin.vertical
                 )
                 .align(Alignment.CenterHorizontally)
         ) {

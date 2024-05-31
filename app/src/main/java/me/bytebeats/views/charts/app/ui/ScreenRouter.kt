@@ -12,10 +12,18 @@ import androidx.compose.runtime.setValue
 object ScreenRouter {
     var currentScreen by mutableStateOf(Screen.Home)
 
+    /**
+     * Navigate
+     *
+     * @param screen
+     */
     fun navigate(screen: Screen) {
         currentScreen = screen
     }
 
+    /**
+     * Navigate home
+     */
     fun navigateHome() {
         currentScreen = Screen.Home
     }

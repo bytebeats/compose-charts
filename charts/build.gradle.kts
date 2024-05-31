@@ -12,6 +12,9 @@ plugins {
     id("signing")
 }
 
+group = getProperty("GROUP_ID")
+version = getProperty("COMPOSE_CHARTS_VERSION")
+
 android {
     namespace = "me.bytebeats.views.charts"
     compileSdk = 34
@@ -81,9 +84,13 @@ val sourcesJar by tasks.registering(Jar::class) {
     }
 }
 
+tasks.withType(GenerateModuleMetadata::class).configureEach {
+    dependsOn(sourcesJar)
+}
+
 tasks.dokkaHtml {
     outputDirectory.set(layout.buildDirectory.dir("dokka"))
-    moduleName.set(getProperty("COMPOSE_CHARTS_NAME"))
+    moduleName.set(getProperty("MODULE_NAME"))
     dokkaSourceSets {
         configureEach {
             suppress = false
@@ -125,7 +132,7 @@ fun Project.checkSigningKey(signingKey: String?) {
     checkPropertyKey(signingKey)
     signingKey?.let { key ->
         if (hasProperty(key).not() && System.getProperties().containsKey(key).not()) {
-            throw IllegalStateException("$signingKey is not found")
+            throw IllegalStateException("$signingKey has to be declared in local.properties or ~/.gradle/gradle.properties")
         }
     }
 }
@@ -149,7 +156,7 @@ afterEvaluate {
             // 1. configure repositories
             repositories {
                 maven {
-                    name = project.getProperty("COMPOSE_CHARTS_ARTIFACT_ID")
+                    name = project.getProperty("REPO_NAME")
                     url = project.getRepoUrl()
 
                     credentials {
@@ -160,7 +167,7 @@ afterEvaluate {
             }
 
             // 2. configure publication
-            val publicationName = project.getProperty("COMPOSE_CHARTS_NAME", "release")
+            val publicationName = project.getProperty("PUBLICATION_NAME", "release")
             create<MavenPublication>(publicationName) {
 
                 if (project.plugins.hasPlugin(libs.plugins.android.library.get().pluginId)) {
@@ -178,7 +185,7 @@ afterEvaluate {
                     version = project.getProperty("COMPOSE_CHARTS_VERSION")
                     inceptionYear = project.getProperty("COMPOSE_CHARTS_INCEPTION_YEAR")
 
-                    name = project.getProperty("COMPOSE_CHARTS_NAME")
+                    name = project.getProperty("MODULE_NAME")
                     description = project.getProperty("COMPOSE_CHARTS_DESCRIPTION")
                     url = project.getProperty("COMPOSE_CHARTS_URL")
 

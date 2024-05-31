@@ -29,7 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.bytebeats.views.charts.app.ui.ScreenRouter
-import me.bytebeats.views.charts.app.ui.theme.Margins
+import me.bytebeats.views.charts.app.ui.theme.Margin
 import me.bytebeats.views.charts.bar.BarChart
 import me.bytebeats.views.charts.bar.render.label.SimpleLabelDrawer.DrawLocation
 import me.bytebeats.views.charts.bar.render.yaxis.SimpleYAxisDrawer
@@ -67,8 +67,8 @@ private fun BarChartContent(modifier: Modifier = Modifier) {
     val barChartDataModel = BarChartDataModel()
     Column(
         modifier = modifier.padding(
-            horizontal = Margins.horizontal,
-            vertical = Margins.vertical
+            horizontal = Margin.horizontal,
+            vertical = Margin.vertical
         )
     ) {
         BarChartRow(barChartDataModel = barChartDataModel)
@@ -86,7 +86,7 @@ private fun BarChartRow(barChartDataModel: BarChartDataModel) {
         modifier = Modifier
             .fillMaxWidth()
             .height(280.dp)
-            .padding(vertical = Margins.verticalLarge)
+            .padding(vertical = Margin.verticalLarge)
     ) {
         BarChart(
             barChartData = barChartDataModel.barChartData,
@@ -112,15 +112,15 @@ private fun DrawLabelLocation(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = Margins.verticalLarge),
+            .padding(top = Margin.verticalLarge),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    horizontal = Margins.horizontal,
-                    vertical = Margins.vertical
+                    horizontal = Margin.horizontal,
+                    vertical = Margin.vertical
                 )
                 .align(Alignment.CenterVertically),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -142,7 +142,7 @@ private fun AddOrRemoveBar(barChartDataModel: BarChartDataModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = Margins.vertical),
+            .padding(vertical = Margin.vertical),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
@@ -158,7 +158,7 @@ private fun AddOrRemoveBar(barChartDataModel: BarChartDataModel) {
         }
 
         Row(
-            modifier = Modifier.padding(horizontal = Margins.horizontal),
+            modifier = Modifier.padding(horizontal = Margin.horizontal),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(text = "Bars: ")

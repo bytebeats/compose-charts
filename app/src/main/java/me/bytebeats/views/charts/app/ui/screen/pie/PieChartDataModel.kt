@@ -54,7 +54,7 @@ class PieChartDataModel {
     val slices
         get() = pieChartData.slices
 
-    fun addSlice() {
+    internal fun addSlice() {
         pieChartData = pieChartData.copy(
             slices = slices.toMutableList().apply {
                 add(
@@ -67,7 +67,7 @@ class PieChartDataModel {
         )
     }
 
-    fun removeSlice() {
+    internal fun removeSlice() {
         pieChartData = pieChartData.copy(
             slices = slices.toMutableList().apply {
                 val lastSlice = slices.last()

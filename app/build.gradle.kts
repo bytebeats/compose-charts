@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.detekt.gradle.plugin)
 }
 
 android {
@@ -58,6 +59,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation(project(":charts"))
-    // implementation(libs.compose.charts)
+//    implementation(project(":charts"))
+     implementation(libs.compose.charts)
 }

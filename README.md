@@ -12,11 +12,11 @@ Simple Jetpack Compose Charts for multi-platform. Including Android, Web, Deskto
 
 Compose Multiplatform for Desktop: [compose-charts-desktop](https://github.com/bytebeats/compose-charts-desktop).
 
-**LATEST_VERSION**: 0.1.2
+**LATEST_VERSION**: 0.2.1
 
-**COMPOSE_VERSION**: 1.1.1
+**COMPOSE_VERSION**: 1.6.7
 
-**KOTLIN_VERSION**: 1.6.10
+**KOTLIN_VERSION**: 1.9.24
 
 ## Graph Effects
 
@@ -26,23 +26,25 @@ Compose Multiplatform for Desktop: [compose-charts-desktop](https://github.com/b
 
 1. add maven and dependency:
 
-1.1. add specific maven url in your root `build.gradle`
+1.1. add specific maven url in your root `build.gradle.kts`
 
 ```
     repositories {
-       maven { url('https://repo1.maven.org/maven2/') }
-               ...
+       ...
+       maven {
+            url = uri("https://repo1.maven.org/maven2/")
+       }
     }
 ```
 
-1.2. add dependency in your module `build.gradle`
+1.2. add dependency in your module `build.gradle.kts`
 
 ```
 dependencies {
-    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation("androidx.compose.ui:ui:$compose_version")
 
-//    implementation project(':charts')
-    implementation('io.github.bytebeats:compose-charts:LATEST_VERSION')
+//    implementation(project(":charts"))
+    implementation("io.github.bytebeats:compose-charts:${LATEST_VERSION}")
 }
 ```
 

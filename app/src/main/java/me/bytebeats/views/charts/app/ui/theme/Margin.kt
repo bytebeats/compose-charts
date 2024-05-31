@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
  * Quote: Peasant. Educated. Worker
  */
 
-internal object Margins {
+internal object Margin {
     val horizontal = 15.dp
     val horizontalLarge = 30.dp
     val vertical = 15.dp
