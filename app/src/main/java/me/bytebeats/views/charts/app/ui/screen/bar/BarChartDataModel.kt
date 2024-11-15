@@ -75,7 +75,7 @@ class BarChartDataModel {
         }
 
     internal fun addBar() {
-        barChartData = barChartData.copy(bars = bars.toMutableList().apply {
+        val newBars = bars.toMutableList().apply {
             add(
                 BarChartData.Bar(
                     label = "Bar ${bars.size + 1}",
@@ -83,7 +83,8 @@ class BarChartDataModel {
                     color = randomColor()
                 )
             )
-        }.toList())
+        }.toList()
+        barChartData = barChartData.copy(bars = newBars, maxBarValue = newBars.maxOf { it.value })
     }
 
     internal fun removeBar() {
